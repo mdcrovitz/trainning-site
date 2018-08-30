@@ -1,0 +1,27 @@
+/** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\base\_global.css **/
+/*
+	This file contains styles common to our entire site.
+*/
+
+body {
+	font-family: 'Roboto', sans-serif;
+	color: #333;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Adjust the way browsers compute width percentages. The default is to
+		use the assigned percentages, render the object, then apply any padding
+		or margins. So many times this will brak things as the percentage plus
+		padding exceeds 100%. But by using the following setting, we inform
+		the browser to include padding of the object before it does any width
+		calculatoin. The * {} means to apply this rule to all tags.
+*/
+* {
+	box-sizing: border-box;
+}
+
+			/* end file _global.css **/

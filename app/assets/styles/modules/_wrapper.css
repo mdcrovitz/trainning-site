@@ -1,0 +1,44 @@
+/************************
+		File:  D:\zzWork\sites\trainning-site\app\assets\styles\modules\_wrapper.css
+		Description: We observe that for small devices like phones, all our text bumps
+			up agains the edges. We want to fix that. But we also observe that this needed
+			padding or margin is part of a larger pattern that should get shared with
+			several other blocks in the system. To accomodate that pattern, we create this
+			file.
+************************/
+
+.wrapper {
+
+
+	/* here we deal with anything that flows outside our viewport. This is
+		used to correct the problem where we have padding between columns
+		and have unnexessary padding on the last right most column. See the
+		_rows.css class for more explainatoin.
+	*/
+	overflow: hidden;
+
+	padding-left: 18px;
+	padding-right: 18px;
+
+	max-width: 1200px;	/* maximum view port 1200 */
+	margin-left: auto;	/* center content within view port */
+	margin-right: auto;
+
+	&--medium {
+		max-width: 976px;
+	}
+
+	/* A css idiom: In our html, it becomes possible that we could end up
+		with nexted wrapper classes. Should that even happen, we do not want
+		to cascade  the L/R padding. the following syntax addresses the case
+		where we end up with nested wrappers.
+	*/
+	.wrapper {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+
+
+/************* End _wrapper.css **************/

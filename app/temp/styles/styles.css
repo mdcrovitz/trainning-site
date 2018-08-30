@@ -1,0 +1,679 @@
+/******************************************************************************/
+/**********************Beginning style.css*************************************/
+/*******D:\zzWork\sites\trainning-site\app\assets\styles\styles.css************/
+/**
+		NOTE. This is a source file for our css system. It and and the assorted
+		included files all need to get post processed via PostCSS (using gulp)
+		in order to accomplish this.
+**/
+/* This is where we import a css code fragment
+	NOTE: we're using revcerse slashes becasue this is based
+	upoin java. Does not need the extension.
+
+	Also, imports need to be at the top of our file
+
+	Last, npm styles (mormalize.css) don't need any path as our postcss-import
+	handles that for us.
+*/
+/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
+}
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input { /* 1 */
+  overflow: visible;
+}
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select { /* 1 */
+  text-transform: none;
+}
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+/** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\base\_global.css **/
+/*
+	This file contains styles common to our entire site.
+*/
+body {
+	font-family: 'Roboto', sans-serif;
+	color: #333;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+/* Adjust the way browsers compute width percentages. The default is to
+		use the assigned percentages, render the object, then apply any padding
+		or margins. So many times this will brak things as the percentage plus
+		padding exceeds 100%. But by using the following setting, we inform
+		the browser to include padding of the object before it does any width
+		calculatoin. The * {} means to apply this rule to all tags.
+*/
+* {
+	box-sizing: border-box;
+}
+/* end file _global.css **/
+/**** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\base\_variables.css ***/
+/*
+	This file contains simple variables we use throughtout.
+*/
+/* Color for base button, and header text */
+/*** End file _variables.css ***/
+/****
+	File:  D:\zzWork\sites\trainning-site\\app\assets\styles\base\_mixins.css
+	Description:	mixins contains 'subroutine-like' code that can be used in
+			css files. This rfequjires the mixin plugin for postcss, and further,
+			this mixin plugin must be set up after simple-vars and nested.
+****/
+/*	Create a mixin that passes style only to screens larger that what we
+		consider a smartphone size. In actuality, we create mixins for 4 different
+		sizes, the default, which is our super small screens < 530, the next larger
+		sizes 530 small < 800, the next larger 800 < medium < 1200 and our largest
+		large < 1200.
+		(See modules\_large-hero.css for our first example of using this mixin.)
+
+		By the way, a little research on phone display sizes:
+
+		Tiny:  480 X 320	1.2% of 2017 android market
+		small:
+		medium: 800 X 480 10.3%
+		large: 1280 X 720 28.9%
+
+		Three groups seems to be common:  phone, tablet, and desktop
+			Phone:  <375
+			Tablet: 768 --> 1024
+			Desktop: > 1024
+
+			For me, I think 4 as follows:
+			Tiny (default): 480 (though 320 is the smallest, this is < 1.2% of the market while
+													480 gets 20%
+			small: 480 --> 768
+			medium:768 --> 1280
+			large: >1280
+
+			Last, detune #'s to account for browser O/H's as in this table:
+			Smallest screen res for my stuff:  480 X 800
+			480 --> 468
+			768 --> 750
+			1024 --> 989
+			1280 --> 1245
+
+			Schiff's break points are
+			small: 530
+			medium: 800
+			large: 1200
+*/
+/* Since we're float'ing the columns, we need a way to tell the browser
+	that float'ing is over. The next element does that for us. It places
+	a empty text at the closeing div for our row class, clears both hor and
+	vert float's and forces a display of our table. We use a mixin to define these
+	clear settings so we can us this throughout.
+*/
+/*********** End file _mixins.css ***********/
+/**** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\modules\_large-hero.css ***/
+/*
+	This will be a code fragment that provides the CSS for the large hero
+	image in the masthead
+*/
+/*
+	In this file we get a taste of nesting, another postcss filter benefit. Proper
+	CSS for our objectives requires each class to get its own single definition.
+	Were we to nest our css classes, then gulp produces specificity selectors
+	which is not what we want. Further, in this style, we loose the relationshiop
+	between classes, other than by the class name.
+
+	However, gulp does provide a syntax to write nested code that generates separate
+	css classes. The & resolves to the parent class and creates new separate class
+	with the nested object.
+
+	Also, we learn about the fontsize or rem. This is a relative size. Thge base for
+	this rfelative size the size that gets used for the <html> tag. usually, this is
+	16px. Soe a 1.5rem ends up about 24px.
+
+	NOTE: We want to base as much of our style on what the user may already have going
+	in terms of their default size, color, etc. This is another reason for using rem for
+	size.
+*/
+.large-hero {
+	position: relative;
+
+	/* create a small bottom border at the bottom of the image */
+	border-bottom: 10px solid #2f5572;
+}
+/* a white space between the image and our border element */
+.large-hero__image {
+		display: block;
+	}
+/*
+		Position a block text centered horizontally and vertically within an image
+	*/
+.large-hero__text-content {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			text-align: center;
+			top: 50%;
+			-webkit-transform: translateY(-50%);
+			        transform: translateY(-50%);
+	}
+/* any space for character descendors. This space if present, whoud show up as*/
+.large-hero__title {
+		font-weight: 300;
+		color: #2f5572;
+		margin: 0;		/* removes verticle space */
+		font-size: 2.4rem;		/* base font size for mobile first design */
+	}
+/* Here is where we use our firtst defined mixin that causes css code
+				if and when the size of the device is larger that what we expect
+				smart phones to be. Remember, in our mixins, we accounted for 4
+				total device sizes. However, is a later lesson, we see that we really
+				only need 2 different sizes, our base and small.
+		*/
+@media (min-width: 468px) {
+.large-hero__title {
+			font-size: 4.8rem
+	}
+	}
+/* Create a modifier for our image, making it a block level element to remove */
+.large-hero__subtitle {
+		font-weight: 300;
+		color: #2f5572;
+
+		/* Adjust subtitle to be responsive by using a small default font and the
+			mixin
+		*/
+		font-size: 1.5rem;
+		margin: 0;		/* removes verticle space */
+	}
+@media (min-width: 468px) {
+.large-hero__subtitle {
+			font-size: 2.9rem;
+	}
+	}
+/* make text white, and larger */
+.large-hero__description {
+		color: #FFF;
+		font-size: 1.1rem;
+		font-weight: 100;		/* use a thin font */
+		/* use a really fine and small shadow , transparent black */
+		text-shadow: 2px 2px 0 rgb(0, 0, 0, .1);
+		/* to get the text to wrap, set a "box" or width for the text.
+			Also, we'll need to cause the paragraph block itself to remain centered
+		*/
+		max-width: 30rem;
+		margin-right: auto;
+		margin-left: auto;
+	}
+@media (min-width: 468px) {
+.large-hero {
+		font-size: 1.875rem
+}
+	}
+/*** End file _large-hero.css ***/
+/**** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\modules\_btn.css ***/
+/*
+	This file will provide style for the buttons used in our site. The base or main button
+	is the blue button at the top Right.
+**/
+.btn {
+	/* set blue background and white text */
+	background-color: #2f5572;
+	color: #fff;
+
+	/* remove underline, and add some margin around the text */
+	text-decoration: none;
+	/* Use smaller vert. padding than horizontal */
+	padding: .75rem 1.2rem;
+	display: inline-block;	/* Parent and containers become aware of padding */
+}
+/* Create our modifier for the orange style button sdfsfsfs */
+.btn--orange {
+		background-color: #d59541;
+	}
+/* another modifier rule for a large button */
+.btn--large {
+		<!-- with no font-size definition, the default is 1rem -->
+		padding: 1.1rem 1.9rem;
+	}
+@media (min-width: 468px) {
+.btn--large {
+			font-size: 1.25rem
+	}
+	}
+/*** End file _btn.css ***/
+/************************
+		File:  D:\zzWork\sites\trainning-site\app\assets\styles\modules\_wrapper.css
+		Description: We observe that for small devices like phones, all our text bumps
+			up agains the edges. We want to fix that. But we also observe that this needed
+			padding or margin is part of a larger pattern that should get shared with
+			several other blocks in the system. To accomodate that pattern, we create this
+			file.
+************************/
+.wrapper {
+
+
+	/* here we deal with anything that flows outside our viewport. This is
+		used to correct the problem where we have padding between columns
+		and have unnexessary padding on the last right most column. See the
+		_rows.css class for more explainatoin.
+	*/
+	overflow: hidden;
+
+	padding-left: 18px;
+	padding-right: 18px;
+
+	max-width: 1200px;	/* maximum view port 1200 */
+	margin-left: auto;	/* center content within view port */
+	margin-right: auto;
+}
+.wrapper--medium {
+		max-width: 976px;
+	}
+/* A css idiom: In our html, it becomes possible that we could end up
+		with nexted wrapper classes. Should that even happen, we do not want
+		to cascade  the L/R padding. the following syntax addresses the case
+		where we end up with nested wrappers.
+	*/
+.wrapper .wrapper {
+		padding-left: 0;
+		padding-right: 0;
+	}
+/************* End _wrapper.css **************/
+/**********************
+		File:  D:\zzWork\sites\trainning-site\app\assets\styles\modules\_page-section.css
+		Description: This module adress the verticle spacing that preceedes each
+			Block.
+***********************/
+/* Class to provide top and bottom padding (0 L-R) to a block
+		On smaller screens, we need less padding */
+.page-section {
+	/* base line padding for tiny screens */
+	padding: 1.1rem 0;
+}
+@media (min-width: 768px) {
+.page-section {
+		padding: 4.5rem 0
+}
+	}
+/* Modifier for blue background, white text (functions section) */
+.page-section--blue {
+		background-color: #2f5572;
+		color: #fff;
+	}
+/********************** End _page-section.css ***********************/
+/********************
+	File:  D:\zzWork\sites\trainning-site\app\assets\styles\modules\_headline.css
+	Description: Styles for our headlines
+*********************/
+.headline {
+	/* remove the native bolding */
+	font-weight: 300;
+
+	/* set font-size but keep in mind small screens nee small font */
+	font-size: 1.9rem;
+
+	/* Adjust color */
+	color: #2f5572;
+}
+@media (min-width: 468px) {
+.headline {
+		font-size: 2.875rem
+}
+	}
+/* Modifier for centered headline */
+.headline--centered {
+		text-align: center;
+	}
+/* Modifier for orange headline */
+.headline--orange {
+		color: #d59541;
+	}
+/* Modifier for smaller text */
+.headline--small {
+		font-size: 1.16rem;
+	}
+@media (min-width: 468px) {
+.headline--small {
+			font-size: 1.875rem
+	}
+	}
+/* make the headline fit within a 500px viewport */
+.headline--narrow {
+		max-width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+/* make the font a lighter weight */
+.headline--light {
+		font-weight: 100;
+	}
+/* modifiers for large and small bottom margins */
+.headline--b-margin-small {
+		/* we use the em unit here becasue em scale with font size, so this
+			class is usable on any sized font */
+		margin-bottom: .5em;
+	}
+.headline--b-margin-large {
+		margin-bottom: 1.6em;
+	}
+/* define how the <strong> </strong> should look */
+.headline strong {
+		font-weight: 400;
+	}
+/*************** End _headline.css ******************/
+/************************
+		File:  D:\zzWork\sites\trainning-site\\app\assets\styles\modules\_row.css
+		Description: This row class provides our extensible support for column
+			layouts. We call this a row class becasuye we're dealing with a "row" of
+			content within a table.
+
+			We define the width of our columns by providing the placing a 12 column
+			grid on the design and specifing how many 12th wide to be.
+************************/
+/* Since we're float'ing the columns, we need a way to tell the browser
+		that float'ing is over. The next element does that for us. It places
+		a empty text at the closeing div for our row class, clears both hor and
+		vert float's and forces a display of our table. We use a mixin to define these
+		clear settings so we can us this throughout.
+	*/
+.row::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+/* the 4/12 wide column */
+.row__4 {
+		float: left;
+		width: 33.33%;
+	}
+/* the 8/12 wide column */
+.row__8 {
+		float: left;
+		width: 66.66%;
+	}
+/* we find that for small screens is that multiple columns is too scruntched.
+		Thus, we define some modifiers to include the case that for screens of size
+		medium or smaller, use full width. Of course, if we're not using the unadorned
+		classes, we ought to remove them, though they only have a little cost.
+	*/
+@media (min-width: 768px) {
+.row {
+	/* the 4/12 wide column */
+
+	/* the 8/12 wide column */
+
+}
+	.row__medium-4 {
+		float: left;
+		width: 33.33%;
+	}
+	.row__medium-8 {
+		float: left;
+		width: 66.66%;
+	}
+	}
+/* Prodvide for gutters between colums. However, we want this style to
+		apply not to the parrent row, but to each column chile. The syntax
+		for this is as shown.
+	*/
+.row--gutters > div {
+		padding-right: 65px;
+	}
+/******************* End file: _row.css *********************/
+
+/**********************Ending style.css****************************************/

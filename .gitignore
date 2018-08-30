@@ -27,3 +27,9 @@ nbproject
 .komodotools
 _notes
 dwsync.xml
+
+## Ignore runtime npm file
+package-lock.json
+
+## By convention, any filename I place a ~ in, is a temporary file and should get ignored
+*~*.*

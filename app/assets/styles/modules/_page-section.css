@@ -1,0 +1,24 @@
+/**********************
+		File:  D:\zzWork\sites\trainning-site\app\assets\styles\modules\_page-section.css
+		Description: This module adress the verticle spacing that preceedes each
+			Block.
+***********************/
+
+/* Class to provide top and bottom padding (0 L-R) to a block
+		On smaller screens, we need less padding */
+.page-section {
+	/* base line padding for tiny screens */
+	padding: 1.1rem 0;
+	@mixin atMedium {
+		padding: 4.5rem 0;
+	}
+
+
+	/* Modifier for blue background, white text (functions section) */
+	&--blue {
+		background-color: $mainBlue;
+		color: #fff;
+	}
+}
+
+/********************** End _page-section.css ***********************/

@@ -1,0 +1,79 @@
+/****
+	File:  D:\zzWork\sites\trainning-site\\app\assets\styles\base\_mixins.css
+	Description:	mixins contains 'subroutine-like' code that can be used in
+			css files. This rfequjires the mixin plugin for postcss, and further,
+			this mixin plugin must be set up after simple-vars and nested.
+****/
+
+/*	Create a mixin that passes style only to screens larger that what we
+		consider a smartphone size. In actuality, we create mixins for 4 different
+		sizes, the default, which is our super small screens < 530, the next larger
+		sizes 530 small < 800, the next larger 800 < medium < 1200 and our largest
+		large < 1200.
+		(See modules\_large-hero.css for our first example of using this mixin.)
+
+		By the way, a little research on phone display sizes:
+
+		Tiny:  480 X 320	1.2% of 2017 android market
+		small:
+		medium: 800 X 480 10.3%
+		large: 1280 X 720 28.9%
+
+		Three groups seems to be common:  phone, tablet, and desktop
+			Phone:  <375
+			Tablet: 768 --> 1024
+			Desktop: > 1024
+
+			For me, I think 4 as follows:
+			Tiny (default): 480 (though 320 is the smallest, this is < 1.2% of the market while
+													480 gets 20%
+			small: 480 --> 768
+			medium:768 --> 1280
+			large: >1280
+
+			Last, detune #'s to account for browser O/H's as in this table:
+			Smallest screen res for my stuff:  480 X 800
+			480 --> 468
+			768 --> 750
+			1024 --> 989
+			1280 --> 1245
+
+			Schiff's break points are
+			small: 530
+			medium: 800
+			large: 1200
+*/
+@define-mixin atSmall {
+	@media (min-width: 468px) {
+		@mixin-content;
+	}
+}
+
+@define-mixin atMedium {
+	@media (min-width: 768px) {
+		@mixin-content;
+	}
+}
+
+@define-mixin atLarge {
+	@media (min-width: 1245px) {
+		@mixin-content;
+	}
+}
+
+/* Since we're float'ing the columns, we need a way to tell the browser
+	that float'ing is over. The next element does that for us. It places
+	a empty text at the closeing div for our row class, clears both hor and
+	vert float's and forces a display of our table. We use a mixin to define these
+	clear settings so we can us this throughout.
+*/
+@define-mixin clearfix {
+	&::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+}
+
+
+/*********** End file _mixins.css ***********/

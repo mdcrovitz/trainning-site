@@ -1,0 +1,66 @@
+/************************
+		File:  D:\zzWork\sites\trainning-site\\app\assets\styles\modules\_row.css
+		Description: This row class provides our extensible support for column
+			layouts. We call this a row class becasuye we're dealing with a "row" of
+			content within a table.
+
+			We define the width of our columns by providing the placing a 12 column
+			grid on the design and specifing how many 12th wide to be.
+************************/
+.row {
+
+	/* Since we're float'ing the columns, we need a way to tell the browser
+		that float'ing is over. The next element does that for us. It places
+		a empty text at the closeing div for our row class, clears both hor and
+		vert float's and forces a display of our table. We use a mixin to define these
+		clear settings so we can us this throughout.
+	*/
+	@mixin clearfix;
+
+
+	/* the 4/12 wide column */
+	&__4 {
+		float: left;
+		width: 33.33%;
+	}
+
+	/* the 8/12 wide column */
+	&__8 {
+		float: left;
+		width: 66.66%;
+	}
+
+	/* we find that for small screens is that multiple columns is too scruntched.
+		Thus, we define some modifiers to include the case that for screens of size
+		medium or smaller, use full width. Of course, if we're not using the unadorned
+		classes, we ought to remove them, though they only have a little cost.
+	*/
+
+
+	@mixin atMedium {
+	/* the 4/12 wide column */
+	&__medium-4 {
+		float: left;
+		width: 33.33%;
+	}
+
+	/* the 8/12 wide column */
+	&__medium-8 {
+		float: left;
+		width: 66.66%;
+	}
+
+	}
+	/* Prodvide for gutters between colums. However, we want this style to
+		apply not to the parrent row, but to each column chile. The syntax
+		for this is as shown.
+	*/
+	&--gutters > div {
+		padding-right: 65px;
+	}
+
+}
+
+
+
+/******************* End file: _row.css *********************/

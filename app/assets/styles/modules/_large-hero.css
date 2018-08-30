@@ -1,0 +1,107 @@
+/**** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\modules\_large-hero.css ***/
+/*
+	This will be a code fragment that provides the CSS for the large hero
+	image in the masthead
+*/
+
+
+/*
+	In this file we get a taste of nesting, another postcss filter benefit. Proper
+	CSS for our objectives requires each class to get its own single definition.
+	Were we to nest our css classes, then gulp produces specificity selectors
+	which is not what we want. Further, in this style, we loose the relationshiop
+	between classes, other than by the class name.
+
+	However, gulp does provide a syntax to write nested code that generates separate
+	css classes. The & resolves to the parent class and creates new separate class
+	with the nested object.
+
+	Also, we learn about the fontsize or rem. This is a relative size. Thge base for
+	this rfelative size the size that gets used for the <html> tag. usually, this is
+	16px. Soe a 1.5rem ends up about 24px.
+
+	NOTE: We want to base as much of our style on what the user may already have going
+	in terms of their default size, color, etc. This is another reason for using rem for
+	size.
+*/
+
+.large-hero {
+	position: relative;
+
+	/* create a small bottom border at the bottom of the image */
+	border-bottom: 10px solid $mainBlue;
+
+	/* Create a modifier for our image, making it a block level element to remove */
+	/* any space for character descendors. This space if present, whoud show up as*/
+	/* a white space between the image and our border element */
+	&__image {
+		display: block;
+	}
+
+	/*
+		Position a block text centered horizontally and vertically within an image
+	*/
+	&__text-content {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			text-align: center;
+			top: 50%;
+			transform: translateY(-50%);
+	}
+
+	&__title {
+		font-weight: 300;
+		color: $mainBlue;
+		margin: 0;		/* removes verticle space */
+		font-size: 2.4rem;		/* base font size for mobile first design */
+
+		/* Here is where we use our firtst defined mixin that causes css code
+				if and when the size of the device is larger that what we expect
+				smart phones to be. Remember, in our mixins, we accounted for 4
+				total device sizes. However, is a later lesson, we see that we really
+				only need 2 different sizes, our base and small.
+		*/
+		@mixin atSmall {
+			font-size: 4.8rem;
+		}
+	}
+
+	&__subtitle {
+		font-weight: 300;
+		color: $mainBlue;
+
+		/* Adjust subtitle to be responsive by using a small default font and the
+			mixin
+		*/
+		font-size: 1.5rem;
+		@mixin atSmall {
+			font-size: 2.9rem;
+		}
+		margin: 0;		/* removes verticle space */
+	}
+
+	/* make text white, and larger */
+	&__description {
+		color: #FFF;
+		font-size: 1.1rem;
+		font-weight: 100;		/* use a thin font */
+		/* use a really fine and small shadow , transparent black */
+		text-shadow: 2px 2px 0 rgb(0, 0, 0, .1);
+		/* to get the text to wrap, set a "box" or width for the text.
+			Also, we'll need to cause the paragraph block itself to remain centered
+		*/
+		max-width: 30rem;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	@mixin atSmall {
+		font-size: 1.875rem;
+	}
+}
+
+
+
+
+			/*** End file _large-hero.css ***/

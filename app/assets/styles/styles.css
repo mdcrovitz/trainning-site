@@ -1,0 +1,31 @@
+/******************************************************************************/
+/**********************Beginning style.css*************************************/
+/*******D:\zzWork\sites\trainning-site\app\assets\styles\styles.css************/
+
+/**
+		NOTE. This is a source file for our css system. It and and the assorted
+		included files all need to get post processed via PostCSS (using gulp)
+		in order to accomplish this.
+**/
+
+/* This is where we import a css code fragment
+	NOTE: we're using revcerse slashes becasue this is based
+	upoin java. Does not need the extension.
+
+	Also, imports need to be at the top of our file
+
+	Last, npm styles (mormalize.css) don't need any path as our postcss-import
+	handles that for us.
+*/
+@import "normalize.css";
+@import "base/_global";
+@import "base/_variables";
+@import "base/_mixins";
+@import "modules/_large-hero";
+@import "modules/_btn";
+@import "modules/_wrapper";
+@import "modules/_page-section";
+@import "modules/_headline";
+@import "modules/_row":
+
+/**********************Ending style.css****************************************/

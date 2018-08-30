@@ -1,0 +1,39 @@
+/**** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\modules\_btn.css ***/
+/*
+	This file will provide style for the buttons used in our site. The base or main button
+	is the blue button at the top Right.
+**/
+
+
+
+.btn {
+	/* set blue background and white text */
+	background-color: $mainBlue;
+	color: #fff;
+
+	/* remove underline, and add some margin around the text */
+	text-decoration: none;
+	/* Use smaller vert. padding than horizontal */
+	padding: .75rem 1.2rem;
+	display: inline-block;	/* Parent and containers become aware of padding */
+
+/* Create our modifier for the orange style button sdfsfsfs */
+	&--orange {
+		background-color: $mainOrange;
+	}
+
+	/* another modifier rule for a large button */
+	&--large {
+		<!-- with no font-size definition, the default is 1rem -->
+		padding: 1.1rem 1.9rem;
+
+		@mixin atSmall {
+			font-size: 1.25rem;
+		}
+	}
+}
+
+
+
+
+			/*** End file _btn.css ***/
