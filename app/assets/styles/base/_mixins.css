@@ -32,7 +32,9 @@
 			large: >1280
 
 			Last, detune #'s to account for browser O/H's as in this table:
-			Smallest screen res for my stuff:  480 X 800
+			Smallest screen res for my stuff:  480 X 800. But for me, I think I'll
+			just use values a bit bigger than the standard sizes so that we our desired
+			formats will be in place as resolutions bounce around the target size
 			480 --> 468
 			768 --> 750
 			1024 --> 989
@@ -44,19 +46,19 @@
 			large: 1200
 */
 @define-mixin atSmall {
-	@media (min-width: 468px) {
+	@media (min-width: 500px) {
 		@mixin-content;
 	}
 }
 
 @define-mixin atMedium {
-	@media (min-width: 768px) {
+	@media (min-width: 800px) {
 		@mixin-content;
 	}
 }
 
 @define-mixin atLarge {
-	@media (min-width: 1245px) {
+	@media (min-width: 1200px) {
 		@mixin-content;
 	}
 }

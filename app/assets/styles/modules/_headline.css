@@ -59,6 +59,11 @@
 	strong {
 		font-weight: 400;
 	}
+
+	/* Modifier for 0 top-margin */
+	&--no-t-margin {
+		margin-top: 0;
+	}
 }
 
 

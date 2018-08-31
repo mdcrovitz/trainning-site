@@ -30,33 +30,80 @@
 		width: 66.66%;
 	}
 
-	/* we find that for small screens is that multiple columns is too scruntched.
+	/* we find that for small screens that multiple columns is too scruntched.
 		Thus, we define some modifiers to include the case that for screens of size
 		medium or smaller, use full width. Of course, if we're not using the unadorned
 		classes, we ought to remove them, though they only have a little cost.
-	*/
 
+		We aslso specify a rule that if we're in the one column mode, we need some
+		verticle spacing. We do that by setting a base spacing and modifing it in
+		the small screen mode
+	*/
+	/* set our default for tiny screens wqith this definition of our ..until-medium class */
+	&__b-margin-until-medium {
+		margin-bottom: 1rem;
+	}
 
 	@mixin atMedium {
+		/* but when we're medium or bigger, redefine our ...until-medium class */
+		&__b-margin-until-medium {
+			margin-bottom: 0;
+		}
+
+
+
 	/* the 4/12 wide column */
-	&__medium-4 {
-		float: left;
-		width: 33.33%;
+		&__medium-4 {
+			float: left;
+			width: 33.33%;
+		}
+
+		/* the 8/12 wide column */
+		&__medium-8 {
+			float: left;
+			width: 66.66%;
+		}
+
+		/* We also see that sometimes our 4/8 column widthes are just a bit off.
+			So in keeping with the notion of good design, we include some rules that
+			for a 4+ size and and and 8- size. Schiff chose to make modifier rules
+			to the medium 4 and medium 8 rules, but I think that makes the html pretty
+			complex and less understandable. Moreover, all you gain with that html
+			bloat is that you save an extra float attribute in the css. I went with
+			explicit sizes.
+		*/
+		&__medium-4-plus {
+			float: left;
+			width: 37%;
+		}
+
+			&__medium-8-minus {
+			float: left;
+			width: 63%;
+		}
 	}
 
-	/* the 8/12 wide column */
-	&__medium-8 {
-		float: left;
-		width: 66.66%;
-	}
 
-	}
 	/* Prodvide for gutters between colums. However, we want this style to
-		apply not to the parrent row, but to each column chile. The syntax
+		apply not to the parrent row, but to each child column. The syntax
 		for this is as shown.
 	*/
 	&--gutters > div {
 		padding-right: 65px;
+	}
+
+	/* With gutters, we have a problem were we really don't want any gutter
+		on the last or right most column. The Schiff way to address this is
+		by extending the right margin of our multi-column layout by the amount of
+		gutter. We do this with a -margin-right. The negative means to move the margin
+		to the right by the amount specified.
+
+		This manouver has the effect of making our rows 65px wider than our desire, but
+		all this overflow is just our padding. So we adjust how to deal with any overflow
+		in our wrapper class by setting rule that overflow gets hidden.
+	*/
+	&--gutters {
+		margin-right: -65px;
 	}
 
 }

@@ -15,6 +15,10 @@
 	Last, npm styles (mormalize.css) don't need any path as our postcss-import
 	handles that for us.
 */
+/* When we added a reference to a globasl var in globals, we got an error because
+	we included _globals before we included our _variables. So we move our _globals
+	to after our mixins. Yes, order does make a differenc.
+*/
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -285,29 +289,6 @@ template {
 [hidden] {
   display: none;
 }
-/** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\base\_global.css **/
-/*
-	This file contains styles common to our entire site.
-*/
-body {
-	font-family: 'Roboto', sans-serif;
-	color: #333;
-}
-img {
-	max-width: 100%;
-	height: auto;
-}
-/* Adjust the way browsers compute width percentages. The default is to
-		use the assigned percentages, render the object, then apply any padding
-		or margins. So many times this will brak things as the percentage plus
-		padding exceeds 100%. But by using the following setting, we inform
-		the browser to include padding of the object before it does any width
-		calculatoin. The * {} means to apply this rule to all tags.
-*/
-* {
-	box-sizing: border-box;
-}
-/* end file _global.css **/
 /**** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\base\_variables.css ***/
 /*
 	This file contains simple variables we use throughtout.
@@ -347,7 +328,9 @@ img {
 			large: >1280
 
 			Last, detune #'s to account for browser O/H's as in this table:
-			Smallest screen res for my stuff:  480 X 800
+			Smallest screen res for my stuff:  480 X 800. But for me, I think I'll
+			just use values a bit bigger than the standard sizes so that we our desired
+			formats will be in place as resolutions bounce around the target size
 			480 --> 468
 			768 --> 750
 			1024 --> 989
@@ -365,6 +348,33 @@ img {
 	clear settings so we can us this throughout.
 */
 /*********** End file _mixins.css ***********/
+/** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\base\_global.css **/
+/*
+	This file contains styles common to our entire site.
+*/
+body {
+	font-family: 'Roboto', sans-serif;
+	color: #333;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+/* Adjust the way browsers compute width percentages. The default is to
+		use the assigned percentages, render the object, then apply any padding
+		or margins. So many times this will brak things as the percentage plus
+		padding exceeds 100%. But by using the following setting, we inform
+		the browser to include padding of the object before it does any width
+		calculatoin. The * {} means to apply this rule to all tags.
+*/
+* {
+	box-sizing: border-box;
+}
+/* for all links make them orange */
+a {
+	color: #d59541;
+}
+/* end file _global.css **/
 /**** Beginning file: D:\zzWork\sites\trainning-site\app\assets\styles\modules\_large-hero.css ***/
 /*
 	This will be a code fragment that provides the CSS for the large hero
@@ -424,7 +434,7 @@ img {
 				total device sizes. However, is a later lesson, we see that we really
 				only need 2 different sizes, our base and small.
 		*/
-@media (min-width: 468px) {
+@media (min-width: 500px) {
 .large-hero__title {
 			font-size: 4.8rem
 	}
@@ -440,7 +450,7 @@ img {
 		font-size: 1.5rem;
 		margin: 0;		/* removes verticle space */
 	}
-@media (min-width: 468px) {
+@media (min-width: 500px) {
 .large-hero__subtitle {
 			font-size: 2.9rem;
 	}
@@ -459,7 +469,7 @@ img {
 		margin-right: auto;
 		margin-left: auto;
 	}
-@media (min-width: 468px) {
+@media (min-width: 500px) {
 .large-hero {
 		font-size: 1.875rem
 }
@@ -490,7 +500,7 @@ img {
 		<!-- with no font-size definition, the default is 1rem -->
 		padding: 1.1rem 1.9rem;
 	}
-@media (min-width: 468px) {
+@media (min-width: 500px) {
 .btn--large {
 			font-size: 1.25rem
 	}
@@ -517,7 +527,11 @@ img {
 	padding-left: 18px;
 	padding-right: 18px;
 
-	max-width: 1200px;	/* maximum view port 1200 */
+	/* maximum view port 1200. However, we also set in our globals.css, to use
+		box-sizing, so just using a max-width of 1200 would include 36px for
+		padding from above. So to keep our viewport to 1200px of visible space,
+		add those padding pixels below. */
+	max-width: 1236px;
 	margin-left: auto;	/* center content within view port */
 	margin-right: auto;
 }
@@ -533,6 +547,16 @@ img {
 		padding-left: 0;
 		padding-right: 0;
 	}
+/* Add a rule that adds a small bottom margin We account for
+			small screens as well*/
+.wrapper--b-margin {
+		margin-bottom: 1rem;
+	}
+@media (min-width: 500px) {
+.wrapper--b-margin {
+			margin-bottom: 3.875rem
+	}
+	}
 /************* End _wrapper.css **************/
 /**********************
 		File:  D:\zzWork\sites\trainning-site\app\assets\styles\modules\_page-section.css
@@ -545,7 +569,7 @@ img {
 	/* base line padding for tiny screens */
 	padding: 1.1rem 0;
 }
-@media (min-width: 768px) {
+@media (min-width: 800px) {
 .page-section {
 		padding: 4.5rem 0
 }
@@ -570,7 +594,7 @@ img {
 	/* Adjust color */
 	color: #2f5572;
 }
-@media (min-width: 468px) {
+@media (min-width: 500px) {
 .headline {
 		font-size: 2.875rem
 }
@@ -587,7 +611,7 @@ img {
 .headline--small {
 		font-size: 1.16rem;
 	}
-@media (min-width: 468px) {
+@media (min-width: 500px) {
 .headline--small {
 			font-size: 1.875rem
 	}
@@ -614,6 +638,10 @@ img {
 /* define how the <strong> </strong> should look */
 .headline strong {
 		font-weight: 400;
+	}
+/* Modifier for 0 top-margin */
+.headline--no-t-margin {
+		margin-top: 0;
 	}
 /*************** End _headline.css ******************/
 /************************
@@ -646,34 +674,113 @@ img {
 		float: left;
 		width: 66.66%;
 	}
-/* we find that for small screens is that multiple columns is too scruntched.
+/* set our default for tiny screens wqith this definition of our ..until-medium class */
+.row__b-margin-until-medium {
+		margin-bottom: 1rem;
+	}
+/* we find that for small screens that multiple columns is too scruntched.
 		Thus, we define some modifiers to include the case that for screens of size
 		medium or smaller, use full width. Of course, if we're not using the unadorned
 		classes, we ought to remove them, though they only have a little cost.
+
+		We aslso specify a rule that if we're in the one column mode, we need some
+		verticle spacing. We do that by setting a base spacing and modifing it in
+		the small screen mode
 	*/
-@media (min-width: 768px) {
+@media (min-width: 800px) {
 .row {
+		/* but when we're medium or bigger, redefine our ...until-medium class */
+
+
+
 	/* the 4/12 wide column */
 
-	/* the 8/12 wide column */
+		/* the 8/12 wide column */
+
+		/* We also see that sometimes our 4/8 column widthes are just a bit off.
+			So in keeping with the notion of good design, we include some rules that
+			for a 4+ size and and and 8- size. Schiff chose to make modifier rules
+			to the medium 4 and medium 8 rules, but I think that makes the html pretty
+			complex and less understandable. Moreover, all you gain with that html
+			bloat is that you save an extra float attribute in the css. I went with
+			explicit sizes.
+		*/
 
 }
-	.row__medium-4 {
-		float: left;
-		width: 33.33%;
-	}
-	.row__medium-8 {
-		float: left;
-		width: 66.66%;
-	}
+		.row__b-margin-until-medium {
+			margin-bottom: 0;
+		}
+		.row__medium-4 {
+			float: left;
+			width: 33.33%;
+		}
+		.row__medium-8 {
+			float: left;
+			width: 66.66%;
+		}
+		.row__medium-4-plus {
+			float: left;
+			width: 37%;
+		}
+
+			.row__medium-8-minus {
+			float: left;
+			width: 63%;
+		}
 	}
 /* Prodvide for gutters between colums. However, we want this style to
-		apply not to the parrent row, but to each column chile. The syntax
+		apply not to the parrent row, but to each child column. The syntax
 		for this is as shown.
 	*/
 .row--gutters > div {
 		padding-right: 65px;
 	}
-/******************* End file: _row.css *********************/
+/* With gutters, we have a problem were we really don't want any gutter
+		on the last or right most column. The Schiff way to address this is
+		by extending the right margin of our multi-column layout by the amount of
+		gutter. We do this with a -margin-right. The negative means to move the margin
+		to the right by the amount specified.
 
+		This manouver has the effect of making our rows 65px wider than our desire, but
+		all this overflow is just our padding. So we adjust how to deal with any overflow
+		in our wrapper class by setting rule that overflow gets hidden.
+	*/
+.row--gutters {
+		margin-right: -65px;
+	}
+/******************* End file: _row.css *********************/
+/***************
+		File:  D:\zzWork\sites\trainning-site\\app\assets\styles\modules\_generic-content-containner.css
+		Description:	This file contains classes for our generic containner class. This
+			is how we adjust general paragraph text throughout the site.
+****************/
+/* select a rule that selects an paragragraph within the element specified by our
+		class. */
+.generic-content-container p {
+		line-heigth: 1.65;	  /* does not reuire any units uses relative to current font */
+		/* is we're smaller than small (phone size of less), we'll apply the
+			the default font-size of 1
+		*/
+
+		margin: 1.8rem 0;
+	}
+/* Make the font a bit larger for non-phone screens */
+@media (min-width: 500px) {
+.generic-content-container p {
+			font-size: 1.125rem;
+	}
+	}
+/* We also want to provide some adjustments to the links contained within these
+			paragraphs. We could nest within the above paragraph, but as a mater of style
+			more than 2 levels of nesting becomes challenging. So we simply invent a
+			new specifier rule as shown.
+	*/
+.generic-content-container p a {
+		font-weight: 700; /* normal weight == 400 */
+
+		/* we also want the link color to be orange, but that is probably better served
+			in a global css.
+		*/
+	}
+/*************** End File: _generic-content-containner.css ***************/
 /**********************Ending style.css****************************************/

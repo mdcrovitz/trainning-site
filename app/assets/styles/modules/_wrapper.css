@@ -20,7 +20,11 @@
 	padding-left: 18px;
 	padding-right: 18px;
 
-	max-width: 1200px;	/* maximum view port 1200 */
+	/* maximum view port 1200. However, we also set in our globals.css, to use
+		box-sizing, so just using a max-width of 1200 would include 36px for
+		padding from above. So to keep our viewport to 1200px of visible space,
+		add those padding pixels below. */
+	max-width: 1236px;
 	margin-left: auto;	/* center content within view port */
 	margin-right: auto;
 
@@ -36,6 +40,15 @@
 	.wrapper {
 		padding-left: 0;
 		padding-right: 0;
+	}
+
+	/* Add a rule that adds a small bottom margin We account for
+			small screens as well*/
+	&--b-margin {
+		margin-bottom: 1rem;
+		@mixin atSmall {
+			margin-bottom: 3.875rem;
+		}
 	}
 }
 

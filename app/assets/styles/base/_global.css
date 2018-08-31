@@ -24,4 +24,9 @@ img {
 	box-sizing: border-box;
 }
 
+/* for all links make them orange */
+a {
+	color: $mainOrange;
+}
+
 			/* end file _global.css **/

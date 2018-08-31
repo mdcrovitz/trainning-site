@@ -1,0 +1,41 @@
+/***************
+		File:  D:\zzWork\sites\trainning-site\\app\assets\styles\modules\_generic-content-containner.css
+		Description:	This file contains classes for our generic containner class. This
+			is how we adjust general paragraph text throughout the site.
+****************/
+
+.generic-content-container {
+	/* select a rule that selects an paragragraph within the element specified by our
+		class. */
+	p {
+		line-heigth: 1.65;	  /* does not reuire any units uses relative to current font */
+
+		/* Make the font a bit larger for non-phone screens */
+		@mixin atSmall {
+			font-size: 1.125rem;
+		}
+		/* is we're smaller than small (phone size of less), we'll apply the
+			the default font-size of 1
+		*/
+
+		margin: 1.8rem 0;
+	}
+
+	/* We also want to provide some adjustments to the links contained within these
+			paragraphs. We could nest within the above paragraph, but as a mater of style
+			more than 2 levels of nesting becomes challenging. So we simply invent a
+			new specifier rule as shown.
+	*/
+	p a {
+		font-weight: 700; /* normal weight == 400 */
+
+		/* we also want the link color to be orange, but that is probably better served
+			in a global css.
+		*/
+	}
+}
+
+
+
+
+/*************** End File: _generic-content-containner.css ***************/
