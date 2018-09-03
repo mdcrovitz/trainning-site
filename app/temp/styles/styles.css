@@ -697,6 +697,8 @@ a {
 
 		/* the 8/12 wide column */
 
+		/* 2 column rule */
+
 		/* We also see that sometimes our 4/8 column widthes are just a bit off.
 			So in keeping with the notion of good design, we include some rules that
 			for a 4+ size and and and 8- size. Schiff chose to make modifier rules
@@ -718,6 +720,10 @@ a {
 			float: left;
 			width: 66.66%;
 		}
+		.row__medium-6 {
+			float: left;
+			width: 50%;
+		}
 		.row__medium-4-plus {
 			float: left;
 			width: 37%;
@@ -735,6 +741,9 @@ a {
 .row--gutters > div {
 		padding-right: 65px;
 	}
+.row--gutters-large > div {
+		padding-right: 100px;
+	}
 /* With gutters, we have a problem were we really don't want any gutter
 		on the last or right most column. The Schiff way to address this is
 		by extending the right margin of our multi-column layout by the amount of
@@ -748,6 +757,9 @@ a {
 .row--gutters {
 		margin-right: -65px;
 	}
+.row--gutters-large {
+		margin-right: -100px;
+	}
 /******************* End file: _row.css *********************/
 /***************
 		File:  D:\zzWork\sites\trainning-site\\app\assets\styles\modules\_generic-content-containner.css
@@ -756,18 +768,20 @@ a {
 ****************/
 /* select a rule that selects an paragragraph within the element specified by our
 		class. */
-.generic-content-container p {
-		line-heigth: 1.65;	  /* does not reuire any units uses relative to current font */
+.generic-content-containner p {
+		font-weight: 300;
+		line-height: 1.65;	  /* does not reuire any units uses relative to current font */
 		/* is we're smaller than small (phone size of less), we'll apply the
 			the default font-size of 1
 		*/
-
-		margin: 1.8rem 0;
+		/* css shorthand for specify margins around a rectangle. Works clockwise, beginning
+			from the Top:  T, R, B, L
+		margin: 0, 0, 1.8rem 0;	/* specify only a Bottom margin */
 	}
 /* Make the font a bit larger for non-phone screens */
 @media (min-width: 500px) {
-.generic-content-container p {
-			font-size: 1.125rem;
+.generic-content-containner p {
+			font-size: 1.125rem
 	}
 	}
 /* We also want to provide some adjustments to the links contained within these
@@ -775,7 +789,7 @@ a {
 			more than 2 levels of nesting becomes challenging. So we simply invent a
 			new specifier rule as shown.
 	*/
-.generic-content-container p a {
+.generic-content-containner p a {
 		font-weight: 700; /* normal weight == 400 */
 
 		/* we also want the link color to be orange, but that is probably better served
@@ -783,4 +797,58 @@ a {
 		*/
 	}
 /*************** End File: _generic-content-containner.css ***************/
+/***************************
+	File:  D:\zzWork\sites\trainning-site\app\assets\styles\modules\_section-title.css
+	Description: This file deals with the elements within the Functions section of the
+								of the page
+****************************/
+.section-title {
+	font-size: 2.55rem;
+	font-weight: 300;
+	text-align: center;
+
+	/* Make icons in this block have a bit of pading */
+}
+/* Use a larger font for devices > small */
+@media (min-width: 500px) {
+.section-title {
+		font-size: 3.75rem
+}
+	}
+/* Any stgrong tag nested weithin a section-title class use this for strong */
+.section-title strong {
+		font-weight: 500;
+	}
+/* NOTE: Schiff assumes phone screens can be tinier than I think the tinest
+			would be. He uses 320 px for the phone size, while my research shows that
+			480 seens to be smallest in 2018. So his mixins really do not add much,
+			and I've not included those for the title icon.
+	*/
+.section-title__icon {
+		margin-right: .5rem;
+		}
+/***************** End File: _section-title.css ********************/
+/***************************
+	File:	D:\zzWork\sites\trainning-site\app\assets\styles\modules\_feature-item.css
+	Description: Thjis class contains all the blocks within the our Features. It includes
+				the icon, title, and a paragraph.
+***************************/
+.feature-item {
+	position: relative;		/* all children will b e relative to this class */
+	padding-left: 94px;		/* shifts everything includ icon to the right */
+	padding-bottom: 2.55rem;
+}
+/* position icon adjacent to the text */
+.feature-item__icon {
+		position: absolute;	/* place icon within the feature-item */
+		left: 0;
+	}
+/* give the title  */
+.feature-item__title {
+		font-size: 1.875rem;
+		font-weight: 300;
+		margin-bottom: .8rem;	/* overrule b. margin from generic-copntent */
+
+	}
+/********************** End file: _feature-item.css ***********************/
 /**********************Ending style.css****************************************/

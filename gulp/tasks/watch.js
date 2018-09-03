@@ -55,7 +55,9 @@ gulp.task('watch', function() {
 // BrowserSynch has the ability to automatically inject new CSS into the browser
 // page, I guess it does this by causing a partial refresh of the contents that involves
 // the link tag
-gulp.task('cssInject',['styles'] ,function() {
+
+gulp.task('cssInject', ['styles'], function() {
+
 	// take the compiled css, give this to the browserSync
 	return gulp.src('./app/temp/styles/styles.css')
 		.pipe(browserSync.stream());

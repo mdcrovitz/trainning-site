@@ -1,0 +1,29 @@
+/***************************
+	File:	D:\zzWork\sites\trainning-site\app\assets\styles\modules\_feature-item.css
+	Description: Thjis class contains all the blocks within the our Features. It includes
+				the icon, title, and a paragraph.
+***************************/
+
+.feature-item {
+	position: relative;		/* all children will b e relative to this class */
+	padding-left: 94px;		/* shifts everything includ icon to the right */
+	padding-bottom: 2.55rem;
+
+	/* position icon adjacent to the text */
+	&__icon {
+		position: absolute;	/* place icon within the feature-item */
+		left: 0;
+	}
+
+	/* give the title  */
+	&__title {
+		font-size: 1.875rem;
+		font-weight: 300;
+		margin-bottom: .8rem;	/* overrule b. margin from generic-copntent */
+
+	}
+}
+
+
+
+/********************** End file: _feature-item.css ***********************/

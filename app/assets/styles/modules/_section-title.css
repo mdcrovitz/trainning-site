@@ -1,0 +1,34 @@
+/***************************
+	File:  D:\zzWork\sites\trainning-site\app\assets\styles\modules\_section-title.css
+	Description: This file deals with the elements within the Functions section of the
+								of the page
+****************************/
+
+.section-title {
+	font-size: 2.55rem;
+	font-weight: 300;
+	text-align: center;
+
+	/* Use a larger font for devices > small */
+	@mixin atSmall {
+		font-size: 3.75rem;
+	}
+
+	/* Any stgrong tag nested weithin a section-title class use this for strong */
+	strong {
+		font-weight: 500;
+	}
+
+	/* Make icons in this block have a bit of pading */
+	/* NOTE: Schiff assumes phone screens can be tinier than I think the tinest
+			would be. He uses 320 px for the phone size, while my research shows that
+			480 seens to be smallest in 2018. So his mixins really do not add much,
+			and I've not included those for the title icon.
+	*/
+	&__icon {
+		margin-right: .5rem;
+		}
+}
+
+
+/***************** End File: _section-title.css ********************/

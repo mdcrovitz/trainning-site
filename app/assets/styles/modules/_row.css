@@ -64,6 +64,12 @@
 			width: 66.66%;
 		}
 
+		/* 2 column rule */
+		&__medium-6 {
+			float: left;
+			width: 50%;
+		}
+
 		/* We also see that sometimes our 4/8 column widthes are just a bit off.
 			So in keeping with the notion of good design, we include some rules that
 			for a 4+ size and and and 8- size. Schiff chose to make modifier rules
@@ -92,6 +98,10 @@
 		padding-right: 65px;
 	}
 
+	&--gutters-large > div {
+		padding-right: 100px;
+	}
+
 	/* With gutters, we have a problem were we really don't want any gutter
 		on the last or right most column. The Schiff way to address this is
 		by extending the right margin of our multi-column layout by the amount of
@@ -104,6 +114,10 @@
 	*/
 	&--gutters {
 		margin-right: -65px;
+	}
+
+	&--gutters-large {
+		margin-right: -100px;
 	}
 
 }

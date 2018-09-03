@@ -4,11 +4,12 @@
 			is how we adjust general paragraph text throughout the site.
 ****************/
 
-.generic-content-container {
+.generic-content-containner {
 	/* select a rule that selects an paragragraph within the element specified by our
 		class. */
 	p {
-		line-heigth: 1.65;	  /* does not reuire any units uses relative to current font */
+		font-weight: 300;
+		line-height: 1.65;	  /* does not reuire any units uses relative to current font */
 
 		/* Make the font a bit larger for non-phone screens */
 		@mixin atSmall {
@@ -17,8 +18,9 @@
 		/* is we're smaller than small (phone size of less), we'll apply the
 			the default font-size of 1
 		*/
-
-		margin: 1.8rem 0;
+		/* css shorthand for specify margins around a rectangle. Works clockwise, beginning
+			from the Top:  T, R, B, L
+		margin: 0, 0, 1.8rem 0;	/* specify only a Bottom margin */
 	}
 
 	/* We also want to provide some adjustments to the links contained within these
