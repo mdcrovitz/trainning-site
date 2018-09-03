@@ -1,5 +1,5 @@
 /*
-	File: D:\zzWork\sites\trainning-site\\gulp\tasks\watch.js
+	File: D:\Users\mdc\Documents\Websites\trainning-site.dev.cc\gulp\tasks\watch.js
 	Description:	This file contains all tasks related to
 		watch operations
 */
@@ -17,12 +17,11 @@ gulp.task('watch', function() {
 	// first init some things
 	browserSync.init({
 		// locate the first page of our website (index.html)
-		notify: false,	// disables the notify nessage BrowserSync places on resynched
+		// notify: false,	// disables the notify nessage BrowserSync places on resynched
 						// pages
-		server: {
-			baseDir: "app"
-		}
-	})
+		proxy: "trainning-site.dev.cc"
+	});
+
 
 	// The watch plugin takes 2 parameters,
 	// first the file we want to watch
@@ -61,4 +60,5 @@ gulp.task('cssInject', ['styles'], function() {
 	// take the compiled css, give this to the browserSync
 	return gulp.src('./app/temp/styles/styles.css')
 		.pipe(browserSync.stream());
-})
+});
+
