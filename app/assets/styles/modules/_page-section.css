@@ -5,12 +5,36 @@
 ***********************/
 
 /* Class to provide top and bottom padding (0 L-R) to a block
-		On smaller screens, we need less padding */
+		On smaller screens, we need less padding
+*/
 .page-section {
 	/* base line padding for tiny screens */
 	padding: 1.1rem 0;
+
 	@mixin atMedium {
-		padding: 4.5rem 0;
+		padding: 4.5rem 0;	/* if you change this, change no-b-padding-until-medium */
+	}
+
+	/*
+		In our Testimonials, for small screens with our columns are all single,
+		we end up with spurious bottom margins in each testimonial.
+	*/
+	&--no-b-padding-until-medium {
+		/* base line padding */
+		padding-bottom: 0;
+
+		@mixin atMedium {
+			padding-bottom: 4.5rem;
+		}
+	}
+
+	&--no-b-padding-until-large {
+		/* base line padding */
+		padding-bottom: 0;
+
+		@mixin atLarge {
+			padding-bottom: 4.5rem;
+		}
 	}
 
 
@@ -20,11 +44,22 @@
 		color: #fff;
 	}
 
-	/* Modifier for the testimonials section to add a background image */
+	/* Modifier for the testimonials section to add a background image.
+			However, this background does not really have a chance to shine
+			on smaller screens and this image is kind of big to boot. So
+			on small screens, no background.
+	*/
 	&--testimonials {
+		/* for smaller sceens, use a light blue background */
+		background-color: #e0e6ef;
 
-		background: url('/app/assets/images/testimonials-bg.jpg') top center no-repeat;
-		background-size: cover;
+		/* For large screens, use the pretty, but expensive background image */
+		@mixin atLarge {
+			background: url('/app/assets/images/testimonials-bg.jpg') top center no-repeat;
+			background-size: cover;
+		}
+
+
 	}
 }
 
