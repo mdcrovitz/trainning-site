@@ -7,8 +7,8 @@
 		in order to accomplish this.
 **/
 /* This is where we import a css code fragment
-	NOTE: we're using revcerse slashes becasue this is based
-	upoin java. Does not need the extension.
+	NOTE: we're using reverse slashes becasue this is based
+	upon java. Does not need the extension.
 
 	Also, imports need to be at the top of our file
 
@@ -579,6 +579,12 @@ a {
 		background-color: #2f5572;
 		color: #fff;
 	}
+/* Modifier for the testimonials section to add a background image */
+.page-section--testimonials {
+
+		background: url('/app/assets/images/testimonials-bg.jpg') top center no-repeat;
+		background-size: cover;
+	}
 /********************** End _page-section.css ***********************/
 /********************
 	File:  D:\zzWork\sites\trainning-site\app\assets\styles\modules\_headline.css
@@ -806,7 +812,6 @@ a {
 	font-size: 2.55rem;
 	font-weight: 300;
 	text-align: center;
-
 	/* Make icons in this block have a bit of pading */
 }
 /* Use a larger font for devices > small */
@@ -818,6 +823,10 @@ a {
 /* Any stgrong tag nested weithin a section-title class use this for strong */
 .section-title strong {
 		font-weight: 500;
+	}
+/* a rule to make the title blue -- used in the testimonials area */
+.section-title--blue {
+		color: #2f5572;
 	}
 /* NOTE: Schiff assumes phone screens can be tinier than I think the tinest
 			would be. He uses 320 px for the phone size, while my research shows that
@@ -851,4 +860,71 @@ a {
 
 	}
 /********************** End file: _feature-item.css ***********************/
+/**********************
+	File: d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_testimonial.css
+	Description: These are the css rules for the individual blocks
+								in teh Testimonial section.
+**********************/
+.testimonial {
+	/* Place each testimonial in a whnite transparent block
+			We use the rgba function which takes 3  values for Red,
+			Green, and Blue, and a # 0-1 which tells the opaqueness where
+			1 is no transparency and 0 is totally transparent.
+	*/
+	background-color: rgba(255, 255, 255, .7 );
+	/* Add a bit or padding, Top, right, bottom, then left. L & R use
+			over 1REM, and bottom uses 1px just becasue using 0 just makes things
+			too tight, and we get some padding as part of our paragraph.
+	*/
+	padding: 0 1.8125rem 1px 1.8125rem;
+
+}
+.testimonial__photo {
+		/* make image a circle. First apply a circle border around the image, then
+				hide all of the image the falls outside the circle. Last, make the image
+				size the size of our circle. Finally to get a whole circle, we need
+				to set the curviture radius to half of the dimension or 80px.
+		*/
+		border-radius: 80px;
+		overflow: hidden;
+		width: 160px;
+		height: 160px;
+
+		/* Center the image in the block and use full shorthand for a margin (TRBL)*/
+		margin: 0 auto -80px auto;
+
+		/* move the image so that half of it extrends through the top of the space
+				Use positrion relative toi do this. However, when we use relative, the
+				rest of the content does not know where to display, so it displays assuming
+				the image is where it alway was. We can get around thie by using a -margin.
+				the value is 1/2 the image size or 80.
+		*/
+		position: relative;
+		top: -80px;
+
+		/* Last give the image a 6px border */
+		border: 6px solid rgba(255, 255, 255, .7 );
+	}
+/* For our title */
+.testimonial__title {
+		/* Make it Blue and centered*/
+		color: #2f5572;
+		text-align: center;
+
+		/* Adjust font size and weight */
+		font-size: 1.5rem;
+		font-weight: 500;
+
+		/* Reduce verticle space between title and image */
+		margin: 0;
+	}
+/* Sub Title rule */
+.testimonial__subtitle {
+		color: #d59541;
+		text-align: center;
+		font-weight: 400;
+		font-size: 0.9375rem;
+		margin: .25rem 1rem;
+	}
+/************** End File: _testimonial.css *************/
 /**********************Ending style.css****************************************/
