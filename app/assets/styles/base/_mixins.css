@@ -43,7 +43,7 @@
 			Schiff's break points are
 			small: 530
 			medium: 800
-			large: 1200
+			large: 1010
 */
 @define-mixin atSmall {
 	@media (min-width: 500px) {
@@ -58,7 +58,7 @@
 }
 
 @define-mixin atLarge {
-	@media (min-width: 1200px) {
+	@media (min-width: 1010px) {
 		@mixin-content;
 	}
 }

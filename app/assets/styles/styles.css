@@ -9,8 +9,8 @@
 **/
 
 /* This is where we import a css code fragment
-	NOTE: we're using revcerse slashes becasue this is based
-	upoin java. Does not need the extension.
+	NOTE: we're using reverse slashes becasue this is based
+	upon java. Does not need the extension.
 
 	Also, imports need to be at the top of our file
 
@@ -35,4 +35,6 @@
 @import "modules/_generic-content-containner";
 @import "modules/_section-title";
 @import "modules/_feature-item";
+@import "modules/_testimonial";
+
 /**********************Ending style.css****************************************/

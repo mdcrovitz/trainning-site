@@ -17,6 +17,10 @@
 	*/
 	overflow: hidden;
 
+	/* If you change these padding values, be sure to change them in the
+			the rule no-padding-until-medium below. We also reference this dimension
+			in our testimonial rule.
+	*/
 	padding-left: 18px;
 	padding-right: 18px;
 
@@ -46,10 +50,42 @@
 			small screens as well*/
 	&--b-margin {
 		margin-bottom: 1rem;
+
 		@mixin atSmall {
 			margin-bottom: 3.875rem;
 		}
 	}
+
+	/* For samll screens, this wrapper class provides left and right padding.
+			However, in the case of testimonials, we also have the white pannels
+			for the content that also has some padding. So for small screens, this
+			becomes too much padding, and this rule removes the wrapper padding
+			until trhe screen size becomes medium or larger.
+	*/
+	&--no-padding-until-medium {
+		/* For small screens, 0-out any previkous padding */
+		padding-left: 0;
+		padding-right: 0;
+
+		/* when screen size hits medium, restore padding */
+		@mixin atMedium {
+			padding-left: 18px;
+			padding-right: 18px;
+		}
+	}
+
+&--no-padding-until-large {
+		/* For small screens, 0-out any previkous padding */
+		padding-left: 0;
+		padding-right: 0;
+
+		/* when screen size hits medium, restore padding */
+		@mixin atLarge {
+			padding-left: 18px;
+			padding-right: 18px;
+		}
+	}
+
 }
 
 

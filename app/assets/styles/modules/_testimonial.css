@@ -1,0 +1,105 @@
+/**********************
+	File: d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_testimonial.css
+	Description: These are the css rules for the individual blocks
+								in teh Testimonial section.
+**********************/
+
+.testimonial {
+	/* Place each testimonial in a white transparent block
+			We use the rgba function which takes 3  values for Red,
+			Green, and Blue, and a # 0-1 which tells the opaqueness where
+			1 is no transparency and 0 is totally transparent.
+	*/
+	background-color: rgba(255, 255, 255, .7 );
+	/* Add a bit or padding, Top, right, bottom, then left. L & R use
+			over 1REM, and bottom uses 1px just becasue using 0 just makes things
+			too tight, and we get some padding as part of our paragraph.
+
+			However, in the case of small screens, we'd like to use a smaller padding
+			so that text has as much room as possible.
+	*/
+
+	/* For normal tiny screens use a smaller padding 18px (same as what's in our
+			wrapper class
+	*/
+	padding: 0 1.1125rem 1px 1.1125rem;
+
+
+	/* and also for small screens when we have everyting in a single column, the
+		floating images runs into the content from above. So se correct that with
+		an 80px margin bottom plus a little bity extra for esthetics. And this gets
+		removed when we reach our medium screen sice.
+	*/
+	margin-bottom: 98px;
+
+	/* Screens bigger than large can use our default padding of 18px */
+	@mixin atLarge {
+		padding: 0 1.8125rem 1px 1.8125rem;
+		margin-bottom: 0;
+	}
+
+
+	&__photo {
+		/* make image a circle. First apply a circle border around the image, then
+				hide all of the image the falls outside the circle. Last, make the image
+				size the size of our circle. Finally to get a whole circle, we need
+				to set the curviture radius to half of the dimension or 80px.
+		*/
+		border-radius: 80px;
+		overflow: hidden;
+		width: 160px;
+		height: 160px;
+
+		/* Center the image in the block and use full shorthand for a margin (TRBL)*/
+		margin: 0 auto -80px auto;
+
+		/* move the image so that half of it extrends through the top of the space
+				Use positrion relative toi do this. However, when we use relative, the
+				rest of the content does not know where to display, so it displays assuming
+				the image is where it alway was. We can get around thie by using a -margin.
+				the value is 1/2 the image size or 80.
+		*/
+		position: relative;
+		top: -80px;
+
+		/* Last give the image a 6px border */
+		border: 6px solid rgba(255, 255, 255, .7 );
+	}
+
+	/* For our title */
+	&__title {
+		/* Make it Blue and centered*/
+		color: $mainBlue;
+		text-align: center;
+
+		/* Adjust font size and weight */
+		font-size: 1.5rem;
+		font-weight: 500;
+
+		/* Reduce verticle space between title and image */
+		margin: 0;
+	}
+
+	/* Sub Title rule */
+	&__subtitle {
+		color: $mainOrange;
+		text-align: center;
+		font-weight: 400;
+		font-size: 0.9375rem;
+		margin: .25rem 1rem;
+	}
+
+	/*
+			The last column of ourt testimonial has a small problem with the
+			bottom margin we have to add to keep the images from running into
+			the testimonial from above. This rule addresses that problem.
+	*/
+	&--last {
+		margin-bottom: 0;
+	}
+}
+
+
+
+
+/************** End File: _testimonial.css *************/

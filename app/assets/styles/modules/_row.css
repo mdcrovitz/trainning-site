@@ -90,6 +90,53 @@
 	}
 
 
+@mixin atLarge {
+		/* but when we're medium or bigger, redefine our ...until-medium class */
+		&__b-margin-until-large {
+			margin-bottom: 0;
+		}
+
+
+
+	/* the 4/12 wide column */
+		&__large-4 {
+			float: left;
+			width: 33.33%;
+		}
+
+		/* the 8/12 wide column */
+		&__large-8 {
+			float: left;
+			width: 66.66%;
+		}
+
+		/* 2 column rule */
+		&__large-6 {
+			float: left;
+			width: 50%;
+		}
+
+		/* We also see that sometimes our 4/8 column widthes are just a bit off.
+			So in keeping with the notion of good design, we include some rules that
+			for a 4+ size and and and 8- size. Schiff chose to make modifier rules
+			to the medium 4 and medium 8 rules, but I think that makes the html pretty
+			complex and less understandable. Moreover, all you gain with that html
+			bloat is that you save an extra float attribute in the css. I went with
+			explicit sizes.
+		*/
+		&__large-4-plus {
+			float: left;
+			width: 37%;
+		}
+
+			&__large-8-minus {
+			float: left;
+			width: 63%;
+		}
+	}
+
+
+
 	/* Prodvide for gutters between colums. However, we want this style to
 		apply not to the parrent row, but to each child column. The syntax
 		for this is as shown.
@@ -100,6 +147,10 @@
 
 	&--gutters-large > div {
 		padding-right: 100px;
+	}
+
+	&--gutters-small > div {
+		padding-right: 45px;
 	}
 
 	/* With gutters, we have a problem were we really don't want any gutter
@@ -118,6 +169,48 @@
 
 	&--gutters-large {
 		margin-right: -100px;
+	}
+
+	&--gutters-small {
+		margin-right: -45px;
+	}
+
+	/* In the testimonial section, we gave the photos a -80px relative padding to
+			get the photos to sit above the block, however that causes the photo to
+			run into the title from above. We solve that by creating a new modifier
+			for the row with some Top Padding.
+	*/
+	&--t-padding {
+		padding-top: 80px;
+	}
+
+	/* Begin equal heigth Rules We want screens that are at least medium size to
+		use a flexbox system to acheive equal heigths. we do this by giving the outer
+		row div the flexbox rule, and all the columns within to also use flexbox.
+		There is a syntax idiom, where the & by itseld represents the current rule.
+	*/
+	&--equal-height_at-medium {
+		@mixin atMedium {
+			display: flex;
+		}
+
+		/* Now tell descendant divs also to use flexbox */
+		& > div {
+			float: none;		/* stop using float */
+			display: flex;	/* and start using flexbox */
+		}
+	}
+
+	&--equal-height_at-large {
+		@mixin atLarge {
+			display: flex;
+		}
+
+		/* Now tell descendant divs also to use flexbox */
+		& > div {
+			float: none;		/* stop using float */
+			display: flex;	/* and start using flexbox */
+		}
 	}
 
 }

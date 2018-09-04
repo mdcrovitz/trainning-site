@@ -7,8 +7,8 @@
 		in order to accomplish this.
 **/
 /* This is where we import a css code fragment
-	NOTE: we're using revcerse slashes becasue this is based
-	upoin java. Does not need the extension.
+	NOTE: we're using reverse slashes becasue this is based
+	upon java. Does not need the extension.
 
 	Also, imports need to be at the top of our file
 
@@ -339,7 +339,7 @@ template {
 			Schiff's break points are
 			small: 530
 			medium: 800
-			large: 1200
+			large: 1010
 */
 /* Since we're float'ing the columns, we need a way to tell the browser
 	that float'ing is over. The next element does that for us. It places
@@ -524,6 +524,10 @@ a {
 	*/
 	overflow: hidden;
 
+	/* If you change these padding values, be sure to change them in the
+			the rule no-padding-until-medium below. We also reference this dimension
+			in our testimonial rule.
+	*/
 	padding-left: 18px;
 	padding-right: 18px;
 
@@ -534,6 +538,7 @@ a {
 	max-width: 1236px;
 	margin-left: auto;	/* center content within view port */
 	margin-right: auto;
+
 }
 .wrapper--medium {
 		max-width: 976px;
@@ -557,6 +562,36 @@ a {
 			margin-bottom: 3.875rem
 	}
 	}
+/* For samll screens, this wrapper class provides left and right padding.
+			However, in the case of testimonials, we also have the white pannels
+			for the content that also has some padding. So for small screens, this
+			becomes too much padding, and this rule removes the wrapper padding
+			until trhe screen size becomes medium or larger.
+	*/
+.wrapper--no-padding-until-medium {
+		/* For small screens, 0-out any previkous padding */
+		padding-left: 0;
+		padding-right: 0;
+	}
+/* when screen size hits medium, restore padding */
+@media (min-width: 800px) {
+.wrapper--no-padding-until-medium {
+			padding-left: 18px;
+			padding-right: 18px
+	}
+	}
+.wrapper--no-padding-until-large {
+		/* For small screens, 0-out any previkous padding */
+		padding-left: 0;
+		padding-right: 0;
+	}
+/* when screen size hits medium, restore padding */
+@media (min-width: 1010px) {
+.wrapper--no-padding-until-large {
+			padding-left: 18px;
+			padding-right: 18px
+	}
+	}
 /************* End _wrapper.css **************/
 /**********************
 		File:  D:\zzWork\sites\trainning-site\app\assets\styles\modules\_page-section.css
@@ -564,20 +599,63 @@ a {
 			Block.
 ***********************/
 /* Class to provide top and bottom padding (0 L-R) to a block
-		On smaller screens, we need less padding */
+		On smaller screens, we need less padding
+*/
 .page-section {
 	/* base line padding for tiny screens */
 	padding: 1.1rem 0;
 }
 @media (min-width: 800px) {
 .page-section {
-		padding: 4.5rem 0
+		padding: 4.5rem 0	/* if you change this, change no-b-padding-until-medium */
 }
+	}
+/*
+		In our Testimonials, for small screens with our columns are all single,
+		we end up with spurious bottom margins in each testimonial.
+	*/
+.page-section--no-b-padding-until-medium {
+		/* base line padding */
+		padding-bottom: 0;
+	}
+@media (min-width: 800px) {
+.page-section--no-b-padding-until-medium {
+			padding-bottom: 4.5rem
+	}
+	}
+.page-section--no-b-padding-until-large {
+		/* base line padding */
+		padding-bottom: 0;
+	}
+@media (min-width: 1010px) {
+.page-section--no-b-padding-until-large {
+			padding-bottom: 4.5rem
+	}
 	}
 /* Modifier for blue background, white text (functions section) */
 .page-section--blue {
 		background-color: #2f5572;
 		color: #fff;
+	}
+/* Modifier for the testimonials section to add a background image.
+			However, this background does not really have a chance to shine
+			on smaller screens and this image is kind of big to boot. So
+			on small screens, no background.
+	*/
+.page-section--testimonials {
+		/* for smaller sceens, use a light blue background */
+		background-color: #e0e6ef;
+
+
+	}
+/* For large screens, use the pretty, but expensive background image */
+@media (min-width: 1010px) {
+.page-section--testimonials {
+			background: url('/app/assets/images/testimonials-bg.jpg') top center no-repeat;
+			background-size: cover
+
+
+	}
 	}
 /********************** End _page-section.css ***********************/
 /********************
@@ -734,6 +812,53 @@ a {
 			width: 63%;
 		}
 	}
+@media (min-width: 1010px) {
+.row {
+		/* but when we're medium or bigger, redefine our ...until-medium class */
+
+
+
+	/* the 4/12 wide column */
+
+		/* the 8/12 wide column */
+
+		/* 2 column rule */
+
+		/* We also see that sometimes our 4/8 column widthes are just a bit off.
+			So in keeping with the notion of good design, we include some rules that
+			for a 4+ size and and and 8- size. Schiff chose to make modifier rules
+			to the medium 4 and medium 8 rules, but I think that makes the html pretty
+			complex and less understandable. Moreover, all you gain with that html
+			bloat is that you save an extra float attribute in the css. I went with
+			explicit sizes.
+		*/
+
+}
+		.row__b-margin-until-large {
+			margin-bottom: 0;
+		}
+		.row__large-4 {
+			float: left;
+			width: 33.33%;
+		}
+		.row__large-8 {
+			float: left;
+			width: 66.66%;
+		}
+		.row__large-6 {
+			float: left;
+			width: 50%;
+		}
+		.row__large-4-plus {
+			float: left;
+			width: 37%;
+		}
+
+			.row__large-8-minus {
+			float: left;
+			width: 63%;
+		}
+	}
 /* Prodvide for gutters between colums. However, we want this style to
 		apply not to the parrent row, but to each child column. The syntax
 		for this is as shown.
@@ -743,6 +868,9 @@ a {
 	}
 .row--gutters-large > div {
 		padding-right: 100px;
+	}
+.row--gutters-small > div {
+		padding-right: 45px;
 	}
 /* With gutters, we have a problem were we really don't want any gutter
 		on the last or right most column. The Schiff way to address this is
@@ -760,6 +888,42 @@ a {
 .row--gutters-large {
 		margin-right: -100px;
 	}
+.row--gutters-small {
+		margin-right: -45px;
+	}
+/* In the testimonial section, we gave the photos a -80px relative padding to
+			get the photos to sit above the block, however that causes the photo to
+			run into the title from above. We solve that by creating a new modifier
+			for the row with some Top Padding.
+	*/
+.row--t-padding {
+		padding-top: 80px;
+	}
+/* Begin equal heigth Rules We want screens that are at least medium size to
+		use a flexbox system to acheive equal heigths. we do this by giving the outer
+		row div the flexbox rule, and all the columns within to also use flexbox.
+		There is a syntax idiom, where the & by itseld represents the current rule.
+	*/
+@media (min-width: 800px) {
+.row--equal-height_at-medium {
+			display: flex
+	}
+	}
+/* Now tell descendant divs also to use flexbox */
+.row--equal-height_at-medium > div {
+			float: none;		/* stop using float */
+			display: flex;	/* and start using flexbox */
+		}
+@media (min-width: 1010px) {
+.row--equal-height_at-large {
+			display: flex
+	}
+	}
+/* Now tell descendant divs also to use flexbox */
+.row--equal-height_at-large > div {
+			float: none;		/* stop using float */
+			display: flex;	/* and start using flexbox */
+		}
 /******************* End file: _row.css *********************/
 /***************
 		File:  D:\zzWork\sites\trainning-site\\app\assets\styles\modules\_generic-content-containner.css
@@ -806,7 +970,6 @@ a {
 	font-size: 2.55rem;
 	font-weight: 300;
 	text-align: center;
-
 	/* Make icons in this block have a bit of pading */
 }
 /* Use a larger font for devices > small */
@@ -818,6 +981,10 @@ a {
 /* Any stgrong tag nested weithin a section-title class use this for strong */
 .section-title strong {
 		font-weight: 500;
+	}
+/* a rule to make the title blue -- used in the testimonials area */
+.section-title--blue {
+		color: #2f5572;
 	}
 /* NOTE: Schiff assumes phone screens can be tinier than I think the tinest
 			would be. He uses 320 px for the phone size, while my research shows that
@@ -851,4 +1018,100 @@ a {
 
 	}
 /********************** End file: _feature-item.css ***********************/
+/**********************
+	File: d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_testimonial.css
+	Description: These are the css rules for the individual blocks
+								in teh Testimonial section.
+**********************/
+.testimonial {
+	/* Place each testimonial in a white transparent block
+			We use the rgba function which takes 3  values for Red,
+			Green, and Blue, and a # 0-1 which tells the opaqueness where
+			1 is no transparency and 0 is totally transparent.
+	*/
+	background-color: rgba(255, 255, 255, .7 );
+	/* Add a bit or padding, Top, right, bottom, then left. L & R use
+			over 1REM, and bottom uses 1px just becasue using 0 just makes things
+			too tight, and we get some padding as part of our paragraph.
+
+			However, in the case of small screens, we'd like to use a smaller padding
+			so that text has as much room as possible.
+	*/
+
+	/* For normal tiny screens use a smaller padding 18px (same as what's in our
+			wrapper class
+	*/
+	padding: 0 1.1125rem 1px 1.1125rem;
+
+
+	/* and also for small screens when we have everyting in a single column, the
+		floating images runs into the content from above. So se correct that with
+		an 80px margin bottom plus a little bity extra for esthetics. And this gets
+		removed when we reach our medium screen sice.
+	*/
+	margin-bottom: 98px;
+}
+/* Screens bigger than large can use our default padding of 18px */
+@media (min-width: 1010px) {
+.testimonial {
+		padding: 0 1.8125rem 1px 1.8125rem;
+		margin-bottom: 0
+}
+	}
+.testimonial__photo {
+		/* make image a circle. First apply a circle border around the image, then
+				hide all of the image the falls outside the circle. Last, make the image
+				size the size of our circle. Finally to get a whole circle, we need
+				to set the curviture radius to half of the dimension or 80px.
+		*/
+		border-radius: 80px;
+		overflow: hidden;
+		width: 160px;
+		height: 160px;
+
+		/* Center the image in the block and use full shorthand for a margin (TRBL)*/
+		margin: 0 auto -80px auto;
+
+		/* move the image so that half of it extrends through the top of the space
+				Use positrion relative toi do this. However, when we use relative, the
+				rest of the content does not know where to display, so it displays assuming
+				the image is where it alway was. We can get around thie by using a -margin.
+				the value is 1/2 the image size or 80.
+		*/
+		position: relative;
+		top: -80px;
+
+		/* Last give the image a 6px border */
+		border: 6px solid rgba(255, 255, 255, .7 );
+	}
+/* For our title */
+.testimonial__title {
+		/* Make it Blue and centered*/
+		color: #2f5572;
+		text-align: center;
+
+		/* Adjust font size and weight */
+		font-size: 1.5rem;
+		font-weight: 500;
+
+		/* Reduce verticle space between title and image */
+		margin: 0;
+	}
+/* Sub Title rule */
+.testimonial__subtitle {
+		color: #d59541;
+		text-align: center;
+		font-weight: 400;
+		font-size: 0.9375rem;
+		margin: .25rem 1rem;
+	}
+/*
+			The last column of ourt testimonial has a small problem with the
+			bottom margin we have to add to keep the images from running into
+			the testimonial from above. This rule addresses that problem.
+	*/
+.testimonial--last {
+		margin-bottom: 0;
+	}
+/************** End File: _testimonial.css *************/
 /**********************Ending style.css****************************************/

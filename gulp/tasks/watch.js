@@ -13,13 +13,23 @@ var browserSync = require('browser-sync').create();
 
 
 gulp.task('watch', function() {
+
+	// Remind use that Desktop Server needs to be runnin
+	console.log('*****************************************');
+	console.log('*       R E M E M B E R   ! !           *');
+	console.log('* Desktop Servers needs to be running.  *');
+	console.log('*****************************************');
+
 	// Set up some browser stuff that occurs within our watch
 	// first init some things
 	browserSync.init({
 		// locate the first page of our website (index.html)
 		// notify: false,	// disables the notify nessage BrowserSync places on resynched
 						// pages
-		proxy: "trainning-site.dev.cc"
+		proxy: {
+			target: "http://trainning-site.dev.cc/app/index.html",
+			ws: true		// using websockets ?
+		}
 	});
 
 
