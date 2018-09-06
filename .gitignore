@@ -11,6 +11,7 @@
 *.sass-cache
 node_modules/
 .tmp/
+*/temp/
 
 # OS or Editor folders
 .DS_Store
@@ -33,3 +34,4 @@ package-lock.json
 
 ## By convention, any filename I place a ~ in, is a temporary file and should get ignored
 *~*.*
+

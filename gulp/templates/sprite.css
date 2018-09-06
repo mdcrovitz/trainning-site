@@ -1,0 +1,33 @@
+/**************************************
+		File:  d:\users\mdc\documents\websites\trainning-site.dev.cc\gulp\templates\sprite.css
+		Description: This is the template for svgSprite to use as he generates our
+				css file that picks out individual icons from the assembled sprite file.
+				In this file, we can include commands for svgSprite.
+
+				svgSprite uses the mustash template system (the curly brackets on their sides
+				sore of looks like a mustash). That is parameters enclosed within double
+				curlys get acted upon.
+***************************************/
+
+/* Set up a start/end tag system
+{{#shapes}}
+	/* {{name}} -- Size & Location */
+	.icon--{{base}} {
+		width: {{width.outer}}px;	// outer include padding
+		height: {{height.outer}}px;
+
+		// We provide a url to for the image. We begin at the browser base folder
+		// then we walk the path to the svgSprite output .svg file. To specify this
+		// output file, we use the special mustash convention of 3 curlies and
+		// the sprite parameter which gives us the output path. The use of
+		// 3 curlies is becasue the svgSprite sprite parameter contains some
+		// forward slashs for the path within the css folder, and we do not
+		// want these forward slashes to be escaped, we just want unadorned
+		// forward slashes.
+		background-image: url('/temp/sprite/css/{{{sprite}}}');
+		background-position: {{position.relative.xy}}; // relative means percentage, absolute means px.
+
+{{/shapes}}
+
+
+/**************** End File:  sprite.css *********************/
