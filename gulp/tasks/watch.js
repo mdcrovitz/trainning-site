@@ -27,7 +27,8 @@ gulp.task('watch', function() {
 		// notify: false,	// disables the notify nessage BrowserSync places on resynched
 						// pages
 		proxy: {
-			target: "http://trainning-site.dev.cc/app/index.html",
+			// target: "http://trainning-site.dev.cc/app/index.html",
+			target: "http://trainning-site.dev.cc/",
 			ws: true		// using websockets ?
 		}
 	});

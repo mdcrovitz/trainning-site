@@ -11,7 +11,8 @@
 *.sass-cache
 node_modules/
 .tmp/
-*/temp/
+
+
 
 # OS or Editor folders
 .DS_Store
@@ -32,6 +33,10 @@ dwsync.xml
 ## Ignore runtime npm file
 package-lock.json
 
-## By convention, any filename I place a ~ in, is a temporary file and should get ignored
+## By convention, any filename or folder I place a ~ in,
+## is a temporary file and should get ignored
 *~*.*
 
+
+## Any folder named temp
+app/temp/**/

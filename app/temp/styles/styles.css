@@ -971,6 +971,11 @@ a {
 	font-weight: 300;
 	text-align: center;
 	/* Make icons in this block have a bit of pading */
+	/* NOTE: Schiff assumes phone screens can be tinier than I think the tinest
+			would be. He uses 320 px for the phone size, while my research shows that
+			480 seens to be smallest in 2018. So his mixins really do not add much,
+			but I've included those for the title icon.
+	*/
 }
 /* Use a larger font for devices > small */
 @media (min-width: 500px) {
@@ -986,14 +991,27 @@ a {
 .section-title--blue {
 		color: #2f5572;
 	}
-/* NOTE: Schiff assumes phone screens can be tinier than I think the tinest
-			would be. He uses 320 px for the phone size, while my research shows that
-			480 seens to be smallest in 2018. So his mixins really do not add much,
-			and I've not included those for the title icon.
-	*/
-.section-title__icon {
+/*&__icon {
 		margin-right: .5rem;
+		display: inline-block;
 		}
+*/
+.section-title__icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: .6rem;
+  }
+@media (min-width: 500px) {
+.section-title__icon {
+      position: relative;
+      top: 8px;
+      margin-right: .5rem;
+      margin-left: 0;
+      margin-bottom: 0;
+      display: inline-block	/* key to get any verticle spacing for the image */
+  }
+	}
 /***************** End File: _section-title.css ********************/
 /***************************
 	File:	D:\zzWork\sites\trainning-site\app\assets\styles\modules\_feature-item.css
@@ -1114,4 +1132,224 @@ a {
 		margin-bottom: 0;
 	}
 /************** End File: _testimonial.css *************/
+/**************************************
+		File:  d:\users\mdc\documents\websites\trainning-site.dev.cc\gulp\templates\sprite.css
+		Description: This is the template for svgSprite to use as he generates our
+				css file that picks out individual icons from the assembled sprite file.
+				In this file, we can include commands for svgSprite.
+
+				svgSprite uses the mustash template system (the curly brackets on their sides
+				sore of looks like a mustash). That is parameters enclosed within double
+				curlys get acted upon.
+
+				gulp produces a generated file: d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_sprite.css, so do not edit this directly.
+				Instead, fiddle wit hthe template file and or the gulp sprite task.
+***************************************/
+/* Set up a start/end tag system */
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+.icon {
+				/*
+						We provide a url to for the image. We begin at the browser base folder
+						then we walk the path to the svgSprite output .svg file. To specify this
+						output file, we use the special mustash convention of 3 curlies and
+						the sprite parameter which gives us the output path. The use of
+						3 curlies is becasue the svgSprite sprite parameter contains some
+						forward slashs for the path within the css folder, and we do not
+						want these forward slashes to be escaped, we just want unadorned
+						forward slashes.
+				*/
+				background-image: url('/app/assets/images/sprites/sprite-d675eadb.svg');
+			}
+/* clear-view-escapes -- Size & Location */
+.icon--clear-view-escapes {
+		/* outer includes padding */
+		width: 142.4px;
+		height: 59.53px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 0 0;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* comment -- Size & Location */
+.icon--comment {
+		/* outer includes padding */
+		width: 64px;
+		height: 64px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 99.70443349753694% 0;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* facebook -- Size & Location */
+.icon--facebook {
+		/* outer includes padding */
+		width: 21.23px;
+		height: 42.01px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 26.040607071652357% 45.795830448496034%;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* fire -- Size & Location */
+.icon--fire {
+		/* outer includes padding */
+		width: 56px;
+		height: 64px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 0 99.56481481481481%;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* globe -- Size & Location */
+.icon--globe {
+		/* outer includes padding */
+		width: 64px;
+		height: 64px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 27.586206896551722% 99.56481481481481%;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* instagram -- Size & Location */
+.icon--instagram {
+		/* outer includes padding */
+		width: 42.01px;
+		height: 42.01px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 63.2917018534157% 49.234556504346486%;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* mail -- Size & Location */
+.icon--mail {
+		/* outer includes padding */
+		width: 64px;
+		height: 48px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 0 48.00806451612903%;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* rain -- Size & Location */
+.icon--rain {
+		/* outer includes padding */
+		width: 64px;
+		height: 64px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 99.70443349753694% 59.25925925925926%;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* star -- Size & Location */
+.icon--star {
+		/* outer includes padding */
+		width: 64px;
+		height: 64px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 59.11330049261084% 99.56481481481481%;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* twitter -- Size & Location */
+.icon--twitter {
+		/* outer includes padding */
+		width: 51.78px;
+		height: 42.06px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 94.04330452560171% 98.50700323226104%;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* wifi -- Size & Location */
+.icon--wifi {
+		/* outer includes padding */
+		width: 60px;
+		height: 64px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 68.79227053140097% 0;
+	}
+/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+/* youtube -- Size & Location */
+.icon--youtube {
+		/* outer includes padding */
+		width: 34.75px;
+		height: 42px;
+
+		/* relative means percentage, absolute means px. */
+		background-position: 36.69752421959096% 45.792307692307695%;
+	}
+/**************** End File:  sprite.css *********************/
 /**********************Ending style.css****************************************/

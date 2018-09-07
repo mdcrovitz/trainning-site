@@ -27,11 +27,28 @@
 	/* NOTE: Schiff assumes phone screens can be tinier than I think the tinest
 			would be. He uses 320 px for the phone size, while my research shows that
 			480 seens to be smallest in 2018. So his mixins really do not add much,
-			and I've not included those for the title icon.
+			but I've included those for the title icon.
 	*/
-	&__icon {
+	/*&__icon {
 		margin-right: .5rem;
+		display: inline-block;
 		}
+*/
+	&__icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: .6rem;
+
+    @mixin atSmall {
+      position: relative;
+      top: 8px;
+      margin-right: .5rem;
+      margin-left: 0;
+      margin-bottom: 0;
+      display: inline-block;	/* key to get any verticle spacing for the image */
+    }
+  }
 }
 
 

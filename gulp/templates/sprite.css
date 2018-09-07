@@ -7,26 +7,46 @@
 				svgSprite uses the mustash template system (the curly brackets on their sides
 				sore of looks like a mustash). That is parameters enclosed within double
 				curlys get acted upon.
+
+				gulp produces a generated file: d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_sprite.css, so do not edit this directly.
+				Instead, fiddle wit hthe template file and or the gulp sprite task.
 ***************************************/
 
-/* Set up a start/end tag system
+/* Set up a start/end tag system */
 {{#shapes}}
+	/*
+		The exact same url line gets added for each new icon, and this is
+		wasteful. We want to have only a single instance of the url line. However,
+		we can only reference the sprite parameter from within the #shapes block.
+		So we create a new class for the single url, and wrap that in the
+		singleton class in the #first /first block
+	*/
+		{{#first}}
+			.icon {
+				/*
+						We provide a url to for the image. We begin at the browser base folder
+						then we walk the path to the svgSprite output .svg file. To specify this
+						output file, we use the special mustash convention of 3 curlies and
+						the sprite parameter which gives us the output path. The use of
+						3 curlies is becasue the svgSprite sprite parameter contains some
+						forward slashs for the path within the css folder, and we do not
+						want these forward slashes to be escaped, we just want unadorned
+						forward slashes.
+				*/
+				background-image: url('/app/assets/images/sprites/{{{sprite}}}');
+			}
+		{{/first}}
+
+
 	/* {{name}} -- Size & Location */
 	.icon--{{base}} {
-		width: {{width.outer}}px;	// outer include padding
+		/* outer includes padding */
+		width: {{width.outer}}px;
 		height: {{height.outer}}px;
 
-		// We provide a url to for the image. We begin at the browser base folder
-		// then we walk the path to the svgSprite output .svg file. To specify this
-		// output file, we use the special mustash convention of 3 curlies and
-		// the sprite parameter which gives us the output path. The use of
-		// 3 curlies is becasue the svgSprite sprite parameter contains some
-		// forward slashs for the path within the css folder, and we do not
-		// want these forward slashes to be escaped, we just want unadorned
-		// forward slashes.
-		background-image: url('/temp/sprite/css/{{{sprite}}}');
-		background-position: {{position.relative.xy}}; // relative means percentage, absolute means px.
-
+		/* relative means percentage, absolute means px. */
+		background-position: {{position.relative.xy}};
+	}
 {{/shapes}}
 
 
