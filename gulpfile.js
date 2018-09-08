@@ -9,3 +9,6 @@ require('./gulp/tasks/styles');	// '.js' inferred in required command
 // include tasks that does all our watching
 require('./gulp/tasks/watch');
 
+// Include file for our icon sprite support
+require ('./gulp/tasks/sprite');
+
