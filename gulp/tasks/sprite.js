@@ -6,6 +6,7 @@
 var gulp = require('gulp');
 var svgSprite = require('gulp-svg-sprite');
 var rename = require('gulp-rename');
+var del = require('del');
 
 /*
 	Create an opbject literal configuration for svg
@@ -29,8 +30,31 @@ var config = {
 	}
 };
 
+/*
+	One problem we have with the icons task is that obsolete copies of the final
+	sprite*.svg files don't get cleaned up so the output folder accumulates lots
+	of old files. This task beginClean corrects that problem, but we'll need a new
+	npm package to help wit hthe folder delete operation -- del
+*/
+gulp.task ('beginClean', function () {
+	return del(['./app/temp/sprite', './app/assets/images/sprites'])
+/*		.then(paths => {
+		console.log('beginClean:  Deleted files and folders:\n', paths.join('\n'));
+	}) */ ;
+});
+
+
+/*
+	The svgSprite function has done everything to create and build our
+	two sprint files the .svg and the .css, and these files have been moved
+	to the proper folders within our assets. Hence we no longer need the
+	temp\sprite folder, so we delete that now.
+*/
+gulp.task ('endClean', ['copySpriteCSS', 'copySpriteGraphic'], function() {
+	return del('./app/temp/sprite');
+});
 // Create a Gulp taks that does the assembly
-gulp.task ('createSprite', function () {
+gulp.task ('createSprite', ['beginClean'], function () {
 	// Whenever using gulp.src, preface with the return
 	return gulp.src ('./app/assets/images/icons/**/*.svg')
 		.pipe(svgSprite(config))
@@ -88,7 +112,7 @@ gulp.task ('copySpriteGraphic', ['createSprite'], function() {
 	therefore not have this icons task and simply use the command line gulp copySpriteCSS
 	to do the create & build, but then we have a bad name for the full deal.
 */
-gulp.task ('icons', ['copySpriteCSS', 'copySpriteGraphic']);
+gulp.task ('icons', [ 'copySpriteCSS', 'copySpriteGraphic', 'endClean']);
 
 
 
