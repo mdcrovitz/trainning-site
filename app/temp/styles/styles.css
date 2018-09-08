@@ -1352,4 +1352,33 @@ a {
 		background-position: 36.69752421959096% 45.792307692307695%;
 	}
 /**************** End File:  sprite.css *********************/
+/********************************************
+		File:  d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_site-footer.css
+		Description: classes for everything we need to style the footer of our site
+
+*********************************************/
+.site-footer {
+	background-color: #2f5572;
+	color:  #FFF;
+
+	/* Overrule vertical spacing of the paragraph element contained within the div */
+	padding: .5rem;
+
+	/* Center all text contained within */
+	text-align: center;
+}
+/* For mobile, we'll place the text and button on separate lines,  with a bit of space between */
+.site-footer__text {
+		display: block;
+		margin-bottom: 1rem;
+		font-weight: 200;
+	}
+@media (min-width: 800px) {
+.site-footer__text {
+			display: inline-block;
+			margin-bottom: 0;
+			margin-right: 1.4rem
+	}
+	}
+/********************* End File:  _site-footer.css **********************************/
 /**********************Ending style.css****************************************/
