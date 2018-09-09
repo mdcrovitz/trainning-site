@@ -1381,4 +1381,109 @@ a {
 	}
 	}
 /********************* End File:  _site-footer.css **********************************/
+/*************************************
+	File: d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_site-header.css
+	Description: This contains the css rules fro the header.
+			NOTE: The navigatoin bar is in its own file
+	************************************/
+.site-header {
+		/*
+			Our goal is to place the header "on top of" the hero image, not as html wants
+			which is to place the header in its own area. We can overlay ouree header if
+			we use the position absolute tag. Additionally, placing two section in the same
+			area means one will have to be on top of the other, and the default is the
+			second speciotied goes on top. However, we can correct this too by giving our
+			heading a z-index value that is bigger than the hero image. Since the hero image
+			has no z-index, nearly anything we give the header wins for top position.
+			Last, the default sizing for the element would be to minimize everything in our
+			site-header. Again, we can override this by giving the rule width
+		*/
+		position: absolute;
+		z-index: 2;
+		width: 100%;
+
+		/* add just a bit of verticle spacing to bring the header below the top of the window */
+		padding: 10px 0;
+
+
+		/*
+			Set the background color and make it transparent by using the rgba function
+			like rgba(47, 85, 114, .3). We'd need to manually translate our hex colors into
+			decimal, as that is the only correct parametes for rgba.
+
+			However, there is a postcss plugin we can use that extends our abilities and
+			let's us do things like what we use below. The new plugin is postcss-hexrgba.
+		*/
+		background-color: rgba(47,85,114, .30);
+
+	}
+/* Cause button to move to the right edge */
+.site-header__btn-container {
+			float: right;
+		}
+/* Take logo out of the normal page flow by psoitioning absolutely */
+.site-header__logo {
+			z-index: 1;
+			position: absolute;
+			background-color: #2f5572;
+			padding: 25px 36px;
+			top: 0;		/* place logo at top of browser window */
+		}
+/************************ End File: _site-header.css  *********************/
+/*********************************
+	File:  d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_primary-nav.css
+	Description: This is the class for our navigation bar, which is the pattern of a
+				horizontal list of links. And since we think is all a pattern of its own,
+				we deviatge from BEM naming and place all the formatting here.
+/*********************************/
+.primary-nav {
+
+	/*
+		We believe this pattern of a horizontal list of link to be generic, so we do not
+		build classes for each element of the menu (ul, li, a, href, etc.) Instead evcerything
+		is right here. So the usage will be to include a simple list within a primary-nav div.
+
+		Following, we set up the list
+	*/
+
+}
+.primary-nav--pull-right {
+			float: right;
+	}
+/* All ul's within our class will have no maring, padding. */
+.primary-nav ul {
+		margin: 0;
+		padding: 0;
+	}
+/* This says after the ul, stop floating */
+.primary-nav ul::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+/* Similarly, all list items should be unadorned. Further they too should float
+		right. And since we're floating we need to tell the parent to stop floating
+		when he's done.
+	*/
+.primary-nav li {
+		list-style: none;
+		float: left;
+		padding-right: 20px;
+
+		/* Adjust padding to get links to verticaly center in area */
+		/* NOTE: Schiff places this tag in the a element below, but that does not seem to work for me */
+		padding-top: 12px;
+	}
+/* Any links within this primary-nav class should not be main$Orange nor should be
+			underlined.
+	*/
+.primary-nav a {
+		color: #fff;
+		text-decoration: none;
+		font-weight: 300;
+
+
+		/* padding: 12px 0; */
+	}
+/************************* End File: _primary-nav.css  **************************************/
 /**********************Ending style.css****************************************/

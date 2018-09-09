@@ -28,6 +28,8 @@ var cssImport = require('postcss-import');
 	// Include our mixins package
 var mixins = require('postcss-mixins');
 
+var hexrgba = require('postcss-hexrgba');
+
 
 // gulp.task takes 2 params:
 // Name of task
@@ -46,7 +48,7 @@ gulp.task('styles', function(){
 
 	// we use the return prefix due to asynchrous nature of gulp
 	return gulp.src('./app/assets/styles/styles.css')
-		.pipe(postcss([cssImport, mixins, cssvars, nested, autoprefixer]))
+		.pipe(postcss([cssImport, mixins, cssvars, nested, hexrgba, autoprefixer]))
 		// handle errors. All script errors that occur, must go through here.
 		.on('error', function(errorInfo) {
 			// here is where we handle any and all script errors

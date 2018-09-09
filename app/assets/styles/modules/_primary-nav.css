@@ -1,0 +1,60 @@
+/*********************************
+	File:  d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_primary-nav.css
+	Description: This is the class for our navigation bar, which is the pattern of a
+				horizontal list of links. And since we think is all a pattern of its own,
+				we deviatge from BEM naming and place all the formatting here.
+/*********************************/
+.primary-nav {
+
+	&--pull-right {
+			float: right;
+	}
+
+	/*
+		We believe this pattern of a horizontal list of link to be generic, so we do not
+		build classes for each element of the menu (ul, li, a, href, etc.) Instead evcerything
+		is right here. So the usage will be to include a simple list within a primary-nav div.
+
+		Following, we set up the list
+	*/
+
+	/* All ul's within our class will have no maring, padding. */
+	ul {
+		margin: 0;
+		padding: 0;
+
+		/* This says after the ul, stop floating */
+		@mixin clearfix;
+	}
+
+	/* Similarly, all list items should be unadorned. Further they too should float
+		right. And since we're floating we need to tell the parent to stop floating
+		when he's done.
+	*/
+	li {
+		list-style: none;
+		float: left;
+		padding-right: 20px;
+
+		/* Adjust padding to get links to verticaly center in area */
+		/* NOTE: Schiff places this tag in the a element below, but that does not seem to work for me */
+		padding-top: 12px;
+	}
+
+	/* Any links within this primary-nav class should not be main$Orange nor should be
+			underlined.
+	*/
+	a {
+		color: #fff;
+		text-decoration: none;
+		font-weight: 300;
+
+
+		/* padding: 12px 0; */
+	}
+
+}
+
+
+
+/************************* End File: _primary-nav.css  **************************************/
