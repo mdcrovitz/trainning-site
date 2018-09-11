@@ -3,6 +3,13 @@
 	Description: This is the class for our navigation bar, which is the pattern of a
 				horizontal list of links. And since we think is all a pattern of its own,
 				we deviatge from BEM naming and place all the formatting here.
+
+				Our design goals for small screens are:
+					Place the nave menu in a menu button that shows as teh 3 bar menus
+					Shrink the logo
+					Place the get in touch button below the icon
+					Remove the blue bar background
+			These changes will need to appear here and the in the site-header css file.
 /*********************************/
 .primary-nav {
 

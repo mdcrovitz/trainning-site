@@ -15,23 +15,38 @@
   <header class="site-header">
     <div class="wrapper">  <!-- Give everything in the header the same margins as the rest -->
     	<div class="site-header__logo">
-    		<img src="assets/images/icons/clear-view-escapes.svg">
+    		<div class="site-header__logo__graphic icon icon--clear-view-escapes">
+    			<!-- we include this alternate text in the header as it improves our SEO ratting.
+    					But, we don't want this text to compete with the grtaphic, hence the
+    					new class in the above div  -->
+    			Clear View Escapes
+    		</div>
     	</div>
 
-    	<!-- move the button to the right edge -->
-    	<div class="site-header__btn-container">
-    		<a href="#" class="btn">Get in Touch</a>
-    	</div>
-			<!-- We invent a new class for the nav bar becasue it seems that a horizontal list
-				of links is its opwn design pattern.
-			-->
-	    <nav class="primary-nav primary-nav--pull-right">
-	      <ul>
-	        <li><a href="#our-beginning">Our Beginning</a></li>
-	        <li><a href="#features">Features</a></li>
-	        <li><a href="#testimonials">Testimonials</a></li>
-	      </ul>
-	    </nav>
+			<!-- Buijld the mobile menu icon -->
+			<div class="site-header__menu-icon">
+
+			</div>
+
+			<div class="site-header__menu-content">
+				<!-- We place all the nav stuff in its ouwn div so we can provide a controlling
+					class. -->
+				<!-- move the button to the right edge -->
+	    	<div class="site-header__btn-container">
+	    		<a href="#" class="btn">Get in Touch</a>
+	    	</div>
+
+				<!-- We invent a new class for the nav bar becasue it seems that a horizontal list
+					of links is its opwn design pattern.
+				-->
+		    <nav class="primary-nav primary-nav--pull-right">
+		      <ul>
+		        <li><a href="#our-beginning">Our Beginning</a></li>
+		        <li><a href="#features">Features</a></li>
+		        <li><a href="#testimonials">Testimonials</a></li>
+		      </ul>
+		    </nav>
+			</div>
     </div>
   </header>
 

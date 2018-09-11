@@ -420,6 +420,7 @@ a {
 			top: 50%;
 			-webkit-transform: translateY(-50%);
 			        transform: translateY(-50%);
+			padding-top: 60px;	/* Compenstae for the menu bar at the top */
 	}
 /* any space for character descendors. This space if present, whoud show up as*/
 .large-hero__title {
@@ -1383,7 +1384,13 @@ a {
 /********************* End File:  _site-footer.css **********************************/
 /*************************************
 	File: d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_site-header.css
-	Description: This contains the css rules fro the header.
+	Description: This contains the css rules fro the header. Our design goals for small screens are:
+					Place the nave menu in a menu button that shows as teh 3 bar menus
+					Shrink the logo
+					Place the get in touch button below the icon
+					Remove the blue bar background
+			These changes will need to appear here and teh in the primary-nav css file.
+
 			NOTE: The navigatoin bar is in its own file
 	************************************/
 .site-header {
@@ -1405,8 +1412,8 @@ a {
 		/* add just a bit of verticle spacing to bring the header below the top of the window */
 		padding: 10px 0;
 
-
-		/*
+	}
+/*
 			Set the background color and make it transparent by using the rgba function
 			like rgba(47, 85, 114, .3). We'd need to manually translate our hex colors into
 			decimal, as that is the only correct parametes for rgba.
@@ -1414,8 +1421,11 @@ a {
 			However, there is a postcss plugin we can use that extends our abilities and
 			let's us do things like what we use below. The new plugin is postcss-hexrgba.
 		*/
-		background-color: rgba(47,85,114, .30);
+@media (min-width: 800px) {
+.site-header {
+			background-color: rgba(47,85,114, .30)
 
+	}
 	}
 /* Cause button to move to the right edge */
 .site-header__btn-container {
@@ -1428,13 +1438,62 @@ a {
 			background-color: #2f5572;
 			padding: 25px 36px;
 			top: 0;		/* place logo at top of browser window */
+
+			/* For small screens we want the logo centered and shrunk*/
+			left: 50%;
+			-webkit-transform: translateX(-50%) scale(.8);
+			        transform: translateX(-50%) scale(.8);
+			-webkit-transform-origin: 50% 0;
+			        transform-origin: 50% 0;
 		}
+@media (min-width: 800px) {
+.site-header__logo {
+				left: auto;
+				-webkit-transform: translateX(0) ;
+				        transform: translateX(0) 
+		}
+	}
+/* address the text of our logo making it invisible */
+.site-header__logo__graphic {
+			text-indent: -9999px;	/* Moves the text out to never never land */
+		}
+/* this is everything in our nav bar, the menu and the get in touch button */
+.site-header__menu-content {
+			display: none;
+		}
+@media (min-width: 800px) {
+.site-header__menu-content {
+				display: block
+		}
+	}
+/* Create the mobiler menu icon */
+.site-header__menu-icon {
+			/* Begin with a simple white square and don't show it for large screens*/
+			width: 20px;
+			height: 20px;
+			background-color: #FFF;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+@media (min-width: 800px) {
+.site-header__menu-icon {
+				display: none
+		}
+	}
 /************************ End File: _site-header.css  *********************/
 /*********************************
 	File:  d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_primary-nav.css
 	Description: This is the class for our navigation bar, which is the pattern of a
 				horizontal list of links. And since we think is all a pattern of its own,
 				we deviatge from BEM naming and place all the formatting here.
+
+				Our design goals for small screens are:
+					Place the nave menu in a menu button that shows as teh 3 bar menus
+					Shrink the logo
+					Place the get in touch button below the icon
+					Remove the blue bar background
+			These changes will need to appear here and the in the site-header css file.
 /*********************************/
 .primary-nav {
 
