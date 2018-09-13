@@ -1,0 +1,32 @@
+/****************************************************
+	File:  d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\scripts\App.js
+
+*****************************************************/
+
+// Include jquery
+var $ = require ('jquery');
+
+// The new es6 native way to import
+import Person from './modules/person';
+
+// The old es5 aka  syntax which requires webpack
+// var Person = require ('./modules/Person');
+
+// Inheritance using ES6
+class Adult extends Person {
+	payTaxes () {
+		console.log (this.name + " now owes $0 in taxes.");
+	}
+}
+
+var john = new Person("John Doe", "Blue");
+john.greet();
+
+var jane = new Adult("Jane Smith", "Orange");
+
+jane.greet() ;
+jane.payTaxes();
+
+
+// User jquery selector to select all h1 elements and remove them from the page
+$("h1").remove();

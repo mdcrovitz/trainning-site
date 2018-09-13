@@ -12,3 +12,4 @@ require('./gulp/tasks/watch');
 // Include file for our icon sprite support
 require ('./gulp/tasks/sprite');
 
+require ('./gulp/tasks/scripts');

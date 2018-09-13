@@ -72,16 +72,26 @@
 		}
 
 
-		/* this is everything in our nav bar, the menu and the get in touch button */
+		/* this class controls the display of our navigatoin list ul/li that
+				composes the working part of the nav basr. Moreover, becasue the [Get in touch]
+				button is also part of our navigaton system, our html includes that object in the div
+				for this class.
+		*/
 		&__menu-content {
-			display: none;
+			display: none;		/* never show this on small screens */
 
 			@mixin atMedium {
+				display: block;	/* show this for medium and larger screens */
+			}
+
+			/* Build a modifier class that will toggle the menu on and off. This class
+					gets installed programatically via some javascript.  */
+			&--is-visible {
 				display: block;
 			}
 		}
 
-		/* Create the mobiler menu icon */
+		/* Create the mobile menu icon */
 		&__menu-icon {
 			/* Begin with a simple white square and don't show it for large screens*/
 			width: 20px;

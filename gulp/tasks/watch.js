@@ -60,6 +60,11 @@ gulp.task('watch', function() {
 	watch('./app/assets/styles/**/*.css', function() {
 		gulp.start('cssInject');
 	});
+
+	// Whenever a a change is saved to a javascript file,
+	watch ('./app/assets/scripts/**/*.js', function () {
+		gulp.start ('scriptsRefresh');
+	})
 });
 
 // BrowserSynch has the ability to automatically inject new CSS into the browser
@@ -72,4 +77,10 @@ gulp.task('cssInject', ['styles'], function() {
 	return gulp.src('./app/temp/styles/styles.css')
 		.pipe(browserSync.stream());
 });
+
+// Our scriptRefresh task will run our scripts task as a dependancy, then
+// reload our page
+gulp.task('scriptsRefresh', ['scripts'], function() {
+	browserSync.reload();
+})
 
