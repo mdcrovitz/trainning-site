@@ -13,8 +13,21 @@
 /*********************************/
 .primary-nav {
 
+	/* For the small screens, place a bit of padding between the GetInTouch button and
+			the navigation list. Undo that for medium screems
+	*/
+	padding-top: 10px;
+
+	@mixin atMedium {
+		padding-top: 0;
+	}
+
+
 	&--pull-right {
+		/* float right only for medium and larger screens */
+		@mixin atMedium {
 			float: right;
+		}
 	}
 
 	/*
@@ -36,28 +49,59 @@
 
 	/* Similarly, all list items should be unadorned. Further they too should float
 		right. And since we're floating we need to tell the parent to stop floating
-		when he's done.
+		when he's done. But for small screens, we want the just want the li items to
+		be on a single line
 	*/
 	li {
 		list-style: none;
-		float: left;
-		padding-right: 20px;
+		display: inline-block;
+		padding-right: 7px;
+
+		@mixin atMedium {
+			padding-right: 20px;
+			float: left;
+			display: block;
+		}
+
+
+
 
 		/* Adjust padding to get links to verticaly center in area */
-		/* NOTE: Schiff places this tag in the a element below, but that does not seem to work for me */
-		padding-top: 12px;
+		/* NOTE: Schiff places this tag in the a element below, but that does not seem to work for me.
+				Also, Schiff used padding-top of 12, thjat is too much for me. */
+		padding-top: 5px;
+	}
+
+	/* for the last item in our list, we don't need any right padding at leat on small screens,
+			but we do need it for larger screens else we run into the button.
+	*/
+	li:last-child {
+		padding-right: 0;
+
+		@mixin atMedium {
+			padding-right: 20px;
+		}
 	}
 
 	/* Any links within this primary-nav class should not be main$Orange nor should be
-			underlined.
+			underlined. We also want some padding and background colors but only for the small
+			screens.
 	*/
 	a {
 		color: #fff;
 		text-decoration: none;
 		font-weight: 300;
+		display: block;
+		padding: 5px 8px;
+		font-size: .8rem;
+		background-color: rgba($mainBlue, .5);
 
+		@mixin atMedium {
+/*			padding: 12px 0;	Schiff recommended, but not needed -- things still line up. */
+			font-size: 1rem;
+			background-color: transparent;
+		}
 
-		/* padding: 12px 0; */
 	}
 
 }

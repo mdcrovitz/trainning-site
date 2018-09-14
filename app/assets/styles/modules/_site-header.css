@@ -28,6 +28,18 @@
 		/* add just a bit of verticle spacing to bring the header below the top of the window */
 		padding: 10px 0;
 
+		/* For some bling. When the background color changes, we want that transition to
+				occur in 300ms, and should take for the form of "ease-out:
+		*/
+		transition: background-color .3s ease-out;
+
+		/* Let's build the modifier class that some js scrip will programatically add. When the
+				class is present, we want the background to have a semitransparent color.
+		*/
+		&--is-expanded {
+			background-color: rgba($mainBlue, .55);
+		}
+
 
 		/*
 			Set the background color and make it transparent by using the rgba function
@@ -42,9 +54,13 @@
 		}
 
 
-		/* Cause button to move to the right edge */
+		/* Cause button to move to the right edge for medium and larger screens, but to just
+				follow the flow for small screens. */
 		&__btn-container {
-			float: right;
+			@mixin atMedium {
+				float: right;
+			}
+
 		}
 
 		/* Take logo out of the normal page flow by psoitioning absolutely */
@@ -78,35 +94,146 @@
 				for this class.
 		*/
 		&__menu-content {
-			display: none;		/* never show this on small screens */
+			/* force list elements not to show on small screens by setting
+				opacity to 0. However, this does not remove the items from the browser, just
+				makes them invisible, and they could get blindly clicked. To avoid this accidental
+				click, we adjust z-index, and we have to make position things relative. then
+				to make the list items visible, we need to set the opacity to 1 and adjust z-index.
+			*/
+			opacity: 0;
+/*			transform: scale(1.2); 	Recommended by Schiff, but ends up causing the
+																	button to get truncated on the right on large screens.
+																	This means we can also removed the transform: scale(1)
+																	commands from the mixin below and the --is-visible
+																	rule further down. */
+			transition: all .3s ease-out;		/* when opacity does change animate the change */
+			position: relative;
+			z-index: -10;
+
+			/* The following two attributes won't be showing on small screens.
+					However, we place thse attributes here so that when it does show,
+					these parameters won't be changing, and the section will just zoom
+					into and out of existance.
+			*/
+			/* When the menu does show in the browser, render it below the icon */
+			padding-top: 90px;
+
+			/* when the menu shows, center the text */
+			text-align: center;
+
 
 			@mixin atMedium {
-				display: block;	/* show this for medium and larger screens */
-			}
+				opacity: 1;	/* show this for medium and larger screens */
+				z-index: 1;
+				padding-top: 0;
+/*				transform: scale(1);
+*/			}
 
 			/* Build a modifier class that will toggle the menu on and off. This class
 					gets installed programatically via some javascript.  */
 			&--is-visible {
-				display: block;
+				opacity: 1;
+				z-index: 1;
+/*				transform: scale(1);
+*/
+
 			}
 		}
 
-		/* Create the mobile menu icon */
+		/* Create the mobile menu icon. It starts as a small white block, but we massage it into
+				the standard hamburger 3-line menu icon. And then we animate it when we click on it
+				so that it morphs into an X to remove the displayed mobile navigtoin bar.
+
+				We also want these three lines to animate when they go from hamburger to X. So set some
+				transform properties toi get this to happen.
+		*/
 		&__menu-icon {
 			/* Begin with a simple white square and don't show it for large screens*/
 			width: 20px;
-			height: 20px;
-			background-color: #FFF;
+			height: 19px;		/* Schiff suggests 19px just to make the hamburer icon symetrical */
+/*			background-color: #FFF;
+*/
 			position: absolute;
 			top: 10px;
 			right: 10px;
+			/* Make sure, as we're playing with other z-indices, that this guy
+					remains on top, so thjat it is clickable.
+			*/
+			z-index: 10;
+
+			/* the following modifiers create the 3-line hamburger menu element */
+			&::before{
+				content: "";		/* forces this object to be visible */
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 20px;	/* Same width as parent */
+				height: 3px;
+				background-color: #fff;
+				/* This element is going to get rotated, and when it does, we want it to ratate
+						about its upper left hand corner. the default is the center (50% 50%)
+				*/
+				transform-origin:0 0;
+				transition: transform .3s ease-out;
+			}
+
+			&__middle{
+				position: absolute;
+				top: 8px;
+				left: 0;
+				width: 20px;	/* Same width as parent */
+				height: 3px;
+				background-color: #fff;
+				transition: all .3s ease-out;
+				transform-origin: 0 50%;		/* this is so when we animate, everything pulls to the left */
+			}
+
+			&::after{
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 20px;	/* Same width as parent */
+				height: 3px;
+				background-color: #fff;
+				transform-origin: 0 100%;	/* We want to rotate around the botton left hand corner */
+				transition: transition .3s ease-out;
+			}
+
+
 
 			@mixin atMedium{
 				display: none;
 			}
 		}
 
-	}
+				/* the following rule manages the icon's transition to and from an "X".
+						We rotate the top line by 45 degress, but we need to tweak the
+						point of rotation. Then we'll need to increase it length so we'll
+						scale the x-cordinate by 25%. Also, we see that bottom line that rotate
+						CCW looks to be just a bit off, so we do a translate on that.
+				*/
+		&__menu-icon--close-x{
+			&::before {
+				transform: rotate(44deg) scaleX(1.35);	/* Schiff uses scale(1.25) */
+			}
+
+			/* create a rule to hide the middle bar, but we have to manually create the
+					the name.
+			*/
+			.site-header__menu-icon__middle {
+				opacity: 0;
+				transform: scaleX(0);	/* cause the middle bar to shrink */
+			}
+
+			&::after {
+				transform: rotate(-44deg) scaleX(1.35) translateY(1px);	/* Schiff uses scale(1.25) */
+			}
+
+
+		}
+
+}
 
 
 

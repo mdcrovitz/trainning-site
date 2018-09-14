@@ -488,7 +488,9 @@ a {
 
 	/* remove underline, and add some margin around the text */
 	text-decoration: none;
-	/* Use smaller vert. padding than horizontal */
+	/* Use smaller vert. padding than horizontal Schiff uses .75rem 1.2rem, but that
+			is not centered to my eyes.
+	*/
 	padding: .75rem 1.2rem;
 	display: inline-block;	/* Parent and containers become aware of padding */
 }
@@ -498,7 +500,7 @@ a {
 	}
 /* another modifier rule for a large button */
 .btn--large {
-		<!-- with no font-size definition, the default is 1rem -->
+		/* with no font-size definition, the default is 1rem */
 		padding: 1.1rem 1.9rem;
 	}
 @media (min-width: 500px) {
@@ -1412,7 +1414,18 @@ a {
 		/* add just a bit of verticle spacing to bring the header below the top of the window */
 		padding: 10px 0;
 
-	}
+		/* For some bling. When the background color changes, we want that transition to
+				occur in 300ms, and should take for the form of "ease-out:
+		*/
+		transition: background-color .3s ease-out;
+
+}
+/* Let's build the modifier class that some js scrip will programatically add. When the
+				class is present, we want the background to have a semitransparent color.
+		*/
+.site-header--is-expanded {
+			background-color: rgba(47,85,114, .55);
+		}
 /*
 			Set the background color and make it transparent by using the rgba function
 			like rgba(47, 85, 114, .3). We'd need to manually translate our hex colors into
@@ -1425,12 +1438,16 @@ a {
 .site-header {
 			background-color: rgba(47,85,114, .30)
 
+}
 	}
-	}
-/* Cause button to move to the right edge */
+/* Cause button to move to the right edge for medium and larger screens, but to just
+				follow the flow for small screens. */
+@media (min-width: 800px) {
 .site-header__btn-container {
-			float: right;
+				float: right
+
 		}
+	}
 /* Take logo out of the normal page flow by psoitioning absolutely */
 .site-header__logo {
 			z-index: 1;
@@ -1463,34 +1480,140 @@ a {
 				for this class.
 		*/
 .site-header__menu-content {
-			display: none;
+			/* force list elements not to show on small screens by setting
+				opacity to 0. However, this does not remove the items from the browser, just
+				makes them invisible, and they could get blindly clicked. To avoid this accidental
+				click, we adjust z-index, and we have to make position things relative. then
+				to make the list items visible, we need to set the opacity to 1 and adjust z-index.
+			*/
+			opacity: 0;
+/*			transform: scale(1.2); 	Recommended by Schiff, but ends up causing the
+																	button to get truncated on the right on large screens.
+																	This means we can also removed the transform: scale(1)
+																	commands from the mixin below and the --is-visible
+																	rule further down. */
+			transition: all .3s ease-out;		/* when opacity does change animate the change */
+			position: relative;
+			z-index: -10;
+
+			/* The following two attributes won't be showing on small screens.
+					However, we place thse attributes here so that when it does show,
+					these parameters won't be changing, and the section will just zoom
+					into and out of existance.
+			*/
+			/* When the menu does show in the browser, render it below the icon */
+			padding-top: 90px;
+
+			/* when the menu shows, center the text */
+			text-align: center;
 		}
-/* never show this on small screens */
 @media (min-width: 800px) {
 .site-header__menu-content {
-				display: block	/* show this for medium and larger screens */
+				opacity: 1;	/* show this for medium and larger screens */
+				z-index: 1;
+				padding-top: 0
+/*				transform: scale(1);
+*/
 		}
 	}
 /* Build a modifier class that will toggle the menu on and off. This class
 					gets installed programatically via some javascript.  */
 .site-header__menu-content--is-visible {
-				display: block;
+				opacity: 1;
+				z-index: 1;
+/*				transform: scale(1);
+*/
+
 			}
-/* Create the mobile menu icon */
+/* Create the mobile menu icon. It starts as a small white block, but we massage it into
+				the standard hamburger 3-line menu icon. And then we animate it when we click on it
+				so that it morphs into an X to remove the displayed mobile navigtoin bar.
+
+				We also want these three lines to animate when they go from hamburger to X. So set some
+				transform properties toi get this to happen.
+		*/
 .site-header__menu-icon {
 			/* Begin with a simple white square and don't show it for large screens*/
 			width: 20px;
-			height: 20px;
-			background-color: #FFF;
+			height: 19px;		/* Schiff suggests 19px just to make the hamburer icon symetrical */
+/*			background-color: #FFF;
+*/
 			position: absolute;
 			top: 10px;
 			right: 10px;
+			/* Make sure, as we're playing with other z-indices, that this guy
+					remains on top, so thjat it is clickable.
+			*/
+			z-index: 10;
 		}
+/* the following modifiers create the 3-line hamburger menu element */
+.site-header__menu-icon::before{
+				content: "";		/* forces this object to be visible */
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 20px;	/* Same width as parent */
+				height: 3px;
+				background-color: #fff;
+				/* This element is going to get rotated, and when it does, we want it to ratate
+						about its upper left hand corner. the default is the center (50% 50%)
+				*/
+				-webkit-transform-origin:0 0;
+				        transform-origin:0 0;
+				transition: -webkit-transform .3s ease-out;
+				transition: transform .3s ease-out;
+				transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+			}
+.site-header__menu-icon__middle{
+				position: absolute;
+				top: 8px;
+				left: 0;
+				width: 20px;	/* Same width as parent */
+				height: 3px;
+				background-color: #fff;
+				transition: all .3s ease-out;
+				-webkit-transform-origin: 0 50%;
+				        transform-origin: 0 50%;		/* this is so when we animate, everything pulls to the left */
+			}
+.site-header__menu-icon::after{
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 20px;	/* Same width as parent */
+				height: 3px;
+				background-color: #fff;
+				-webkit-transform-origin: 0 100%;
+				        transform-origin: 0 100%;	/* We want to rotate around the botton left hand corner */
+				transition: transition .3s ease-out;
+			}
 @media (min-width: 800px) {
 .site-header__menu-icon {
 				display: none
 		}
 	}
+/* the following rule manages the icon's transition to and from an "X".
+						We rotate the top line by 45 degress, but we need to tweak the
+						point of rotation. Then we'll need to increase it length so we'll
+						scale the x-cordinate by 25%. Also, we see that bottom line that rotate
+						CCW looks to be just a bit off, so we do a translate on that.
+				*/
+.site-header__menu-icon--close-x::before {
+				-webkit-transform: rotate(44deg) scaleX(1.35);
+				        transform: rotate(44deg) scaleX(1.35);	/* Schiff uses scale(1.25) */
+			}
+/* create a rule to hide the middle bar, but we have to manually create the
+					the name.
+			*/
+.site-header__menu-icon--close-x .site-header__menu-icon__middle {
+				opacity: 0;
+				-webkit-transform: scaleX(0);
+				        transform: scaleX(0);	/* cause the middle bar to shrink */
+			}
+.site-header__menu-icon--close-x::after {
+				-webkit-transform: rotate(-44deg) scaleX(1.35) translateY(1px);
+				        transform: rotate(-44deg) scaleX(1.35) translateY(1px);	/* Schiff uses scale(1.25) */
+			}
 /************************ End File: _site-header.css  *********************/
 /*********************************
 	File:  d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_primary-nav.css
@@ -1507,6 +1630,11 @@ a {
 /*********************************/
 .primary-nav {
 
+	/* For the small screens, place a bit of padding between the GetInTouch button and
+			the navigation list. Undo that for medium screems
+	*/
+	padding-top: 10px;
+
 	/*
 		We believe this pattern of a horizontal list of link to be generic, so we do not
 		build classes for each element of the menu (ul, li, a, href, etc.) Instead evcerything
@@ -1516,8 +1644,17 @@ a {
 	*/
 
 }
+@media (min-width: 800px) {
+.primary-nav {
+		padding-top: 0
+
+}
+	}
+/* float right only for medium and larger screens */
+@media (min-width: 800px) {
 .primary-nav--pull-right {
-			float: right;
+			float: right
+	}
 	}
 /* All ul's within our class will have no maring, padding. */
 .primary-nav ul {
@@ -1532,27 +1669,61 @@ a {
 	}
 /* Similarly, all list items should be unadorned. Further they too should float
 		right. And since we're floating we need to tell the parent to stop floating
-		when he's done.
+		when he's done. But for small screens, we want the just want the li items to
+		be on a single line
 	*/
 .primary-nav li {
 		list-style: none;
-		float: left;
-		padding-right: 20px;
+		display: inline-block;
+		padding-right: 7px;
+
+
+
 
 		/* Adjust padding to get links to verticaly center in area */
-		/* NOTE: Schiff places this tag in the a element below, but that does not seem to work for me */
-		padding-top: 12px;
+		/* NOTE: Schiff places this tag in the a element below, but that does not seem to work for me.
+				Also, Schiff used padding-top of 12, thjat is too much for me. */
+		padding-top: 5px;
+	}
+@media (min-width: 800px) {
+.primary-nav li {
+			padding-right: 20px;
+			float: left;
+			display: block;
+	}
+	}
+/* for the last item in our list, we don't need any right padding at leat on small screens,
+			but we do need it for larger screens else we run into the button.
+	*/
+.primary-nav li:last-child {
+		padding-right: 0;
+	}
+@media (min-width: 800px) {
+.primary-nav li:last-child {
+			padding-right: 20px
+	}
 	}
 /* Any links within this primary-nav class should not be main$Orange nor should be
-			underlined.
+			underlined. We also want some padding and background colors but only for the small
+			screens.
 	*/
 .primary-nav a {
 		color: #fff;
 		text-decoration: none;
 		font-weight: 300;
+		display: block;
+		padding: 5px 8px;
+		font-size: .8rem;
+		background-color: rgba(47,85,114, .5);
 
+	}
+@media (min-width: 800px) {
+.primary-nav a {
+/*			padding: 12px 0;	Schiff recommended, but not needed -- things still line up. */
+			font-size: 1rem;
+			background-color: transparent
 
-		/* padding: 12px 0; */
+	}
 	}
 /************************* End File: _primary-nav.css  **************************************/
 /**********************Ending style.css****************************************/

@@ -4,7 +4,7 @@
 		bars.
 
 	Our approach is that on small screens, when the icon does get clicked, we'll add a class
-	to our site-header__menu-icon div and we'll manage menu with that now added new class.
+	to our site-header__menu-icon div and we'll manage menu with that now added new class. Similarly, wqe'll add a class to the site-header and make a transparent background.
 
 ***************************************/
 
@@ -19,6 +19,7 @@ class MobileMenu {
 	//	Functionality
 	constructor () {
 		// Get the DOM objects -- based upon its class
+		this.siteHeader = $(".site-header");
 		this.menuIcon = $(".site-header__menu-icon");	// This is the 3-bar icon
 		this.menuContent = $(".site-header__menu-content");	// class that shows the menu
 
@@ -53,6 +54,8 @@ class MobileMenu {
 	// Provide functions that do our real work, called by the events or whatever
 	toggleTheMenu() {
 		this.menuContent.toggleClass ("site-header__menu-content--is-visible");
+		this.siteHeader.toggleClass ("site-header--is-expanded");
+		this.menuIcon.toggleClass("site-header__menu-icon--close-x");
 	}
 }
 

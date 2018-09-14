@@ -23,9 +23,15 @@
     		</div>
     	</div>
 
-			<!-- Build the mobile menu icon -->
+			<!-- Build the mobile menu icon. This will be the 3-horizontal bar hamburger
+					menu symbol. We could have 3 different divs each with its own class,
+					top, middle, and bottom. But it is a bit more economical to have a single
+					div here in the html, and in the controlling css, add some before and after
+					rules.
+			 -->
 			<div class="site-header__menu-icon">
-
+				<!-- each of the following div will generate our 3-bar menu iconr -->
+				<div class="site-header__menu-icon__middle"></div>
 			</div>
 
 			<div class="site-header__menu-content">
