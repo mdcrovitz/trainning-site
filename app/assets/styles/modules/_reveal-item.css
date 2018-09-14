@@ -1,0 +1,28 @@
+/********************************************
+	File:  d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_reveal-item.css
+
+	Description: This contains the stull for Lesson 47, reveal on scroll. It will focus on the
+			the Features section of our page.
+
+********************************************/
+
+.reveal-item {
+	/* Make Featured Items invisible */
+	opacity: 0;
+
+	/* make the transition to visdible an animated operation */
+	transition: all 1.5s ease-out;
+
+	/* More bling, get the object to give a zoom effect when they become visible */
+	transform: scale(1.15);
+
+
+	/* Create rujle that will allow FI to become visible */
+	&--is-visible {
+		opacity: 1;
+		transform: scale(1);
+
+	}
+}
+
+/****************** End File: _reveal-item.css ********************/
