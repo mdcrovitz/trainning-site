@@ -1840,10 +1840,31 @@ a {
 	display: inline-block; /* the inlins part makes all icons sit on a single line,
 														and the block part lets us assign individual heigths if
 														necessary */
+	/* Add some horiz. spacing */
+	margin: 0 5px 5px 5px;
+
+	/* Make all icons the same size */
+	width: 33%;
+	height: 72px;
+
+	position: relative;
+	}
+@media (min-width: 800px) {
+.social-icons__icon {
+		width: 72px;
+		margin: 5px
+	}
 	}
 /* target any class of icon within this class, this gets the included span */
 .social-icons__icon .icon {
 			display: block;	/* Causes icons to consume space the browser knows about */
+
+			position: absolute;
+			/* center icon image in the 72 X 72 space */
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			        transform: translate(-50%, -50%);
 		}
 /************** End File: 	_social-icons.css *****************/
 /**********************Ending style.css****************************************/
