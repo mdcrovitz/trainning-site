@@ -26,11 +26,20 @@ gulp.task('watch', function() {
 		// locate the first page of our website (index.html)
 		// notify: false,	// disables the notify nessage BrowserSync places on resynched
 						// pages
+
+		// User either the server OR the proxy object, not both
+
 		proxy: {
 			// target: "http://trainning-site.dev.cc/app/index.html",
 			target: "http://trainning-site.dev.cc/",
 			ws: true		// using websockets ?
 		}
+/*
+
+		server: {
+			baseDir: "./app"
+		}
+*/
 	});
 
 

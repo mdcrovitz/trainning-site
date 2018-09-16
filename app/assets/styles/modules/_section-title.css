@@ -23,6 +23,10 @@
 	&--blue {
 		color: $mainBlue;
 	}
+
+	&--less-margin {
+		margin-bottom: 1.3rem;
+	}
 	/* Make icons in this block have a bit of pading */
 	/* NOTE: Schiff assumes phone screens can be tinier than I think the tinest
 			would be. He uses 320 px for the phone size, while my research shows that

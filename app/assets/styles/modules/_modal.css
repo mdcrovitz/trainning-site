@@ -1,0 +1,32 @@
+/*************************************************
+	File: d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_modal.css
+
+	Description: For lessons 50/1 setting up a modal page
+**************************************************/
+.modal {
+	/* Set our modal page to so that it is:
+			takes up the whole screen, is white with just a bit of see-throu, and at least for
+			the moment is on top.
+	*/
+	position: fixed;
+	z-index: 5;
+	background-color: rgba(255, 255, 255, .94);
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	/* a rule for our paragraph */
+	&__description {
+		text-align: center;
+		font-size: 1.3rem;
+		font-weight: 300;
+		line-heigth: 1.65;
+	}
+
+}
+
+
+
+
+/******************* End File: 	_modal.css ******************/

@@ -36,6 +36,10 @@
 		max-width: 976px;
 	}
 
+	&--narrow {
+		max-width: 470px;
+	}
+
 	/* A css idiom: In our html, it becomes possible that we could end up
 		with nexted wrapper classes. Should that even happen, we do not want
 		to cascade  the L/R padding. the following syntax addresses the case

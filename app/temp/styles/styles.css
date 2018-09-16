@@ -546,6 +546,9 @@ a {
 .wrapper--medium {
 		max-width: 976px;
 	}
+.wrapper--narrow {
+		max-width: 470px;
+	}
 /* A css idiom: In our html, it becomes possible that we could end up
 		with nexted wrapper classes. Should that even happen, we do not want
 		to cascade  the L/R padding. the following syntax addresses the case
@@ -993,6 +996,9 @@ a {
 /* a rule to make the title blue -- used in the testimonials area */
 .section-title--blue {
 		color: #2f5572;
+	}
+.section-title--less-margin {
+		margin-bottom: 1.3rem;
 	}
 /*&__icon {
 		margin-right: .5rem;
@@ -1792,4 +1798,52 @@ a {
 
 	}
 /****************** End File: _reveal-item.css ********************/
+/*************************************************
+	File: d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_modal.css
+
+	Description: For lessons 50/1 setting up a modal page
+**************************************************/
+.modal {
+	/* Set our modal page to so that it is:
+			takes up the whole screen, is white with just a bit of see-throu, and at least for
+			the moment is on top.
+	*/
+	position: fixed;
+	z-index: 5;
+	background-color: rgba(255, 255, 255, .94);
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+}
+/* a rule for our paragraph */
+.modal__description {
+		text-align: center;
+		font-size: 1.3rem;
+		font-weight: 300;
+		line-heigth: 1.65;
+	}
+/******************* End File: 	_modal.css ******************/
+/****************************************
+	File:d:\users\mdc\documents\websites\trainning-site.dev.cc\app\assets\styles\modules\_social-icons.css
+
+	Description: Supports social icons and theior sprites.
+
+******************************************/
+.social-icons {
+	text-align: center;
+
+}
+.social-icons__icon {
+	background-color: #d59541;
+	display: inline-block; /* the inlins part makes all icons sit on a single line,
+														and the block part lets us assign individual heigths if
+														necessary */
+	}
+/* target any class of icon within this class, this gets the included span */
+.social-icons__icon .icon {
+			display: block;	/* Causes icons to consume space the browser knows about */
+		}
+/************** End File: 	_social-icons.css *****************/
 /**********************Ending style.css****************************************/
