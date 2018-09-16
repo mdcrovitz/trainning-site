@@ -100,6 +100,16 @@
 /*			padding: 12px 0;	Schiff recommended, but not needed -- things still line up. */
 			font-size: 1rem;
 			background-color: transparent;
+
+			/* This rule applies in the case where: we're
+						medium or larger
+						we're in an a tag
+						we have the class is-current-link
+					NOTE!! no spaces on the rule
+			*/
+			&.is-current-link {
+				color: #fabb69;
+			}
 		}
 
 	}

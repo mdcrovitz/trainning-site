@@ -3,9 +3,10 @@
 
 *****************************************************/
 
-import MobileMenu from './modules/mobilemenu';
-import RevealOnScroll from './modules/RevealOnScroll';
-import $ from "jquery";
+import MobileMenu 		from './modules/mobilemenu';
+import RevealOnScroll 	from './modules/RevealOnScroll';
+import $ 				from "jquery";
+import StickyHeader 	from './modules/StickyHeader';
 
 // Instantate our object
 var mobileMenu = new MobileMenu();
@@ -17,3 +18,7 @@ var mobileMenu = new MobileMenu();
 
 new RevealOnScroll ($(".feature-item"), "85%");
 new RevealOnScroll ($(".testimonial"), "60%");
+
+
+// Implement our stickyHeader
+var stickyHeader = new StickyHeader();

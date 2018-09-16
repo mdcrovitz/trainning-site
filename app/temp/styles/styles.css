@@ -1391,7 +1391,10 @@ a {
 					Shrink the logo
 					Place the get in touch button below the icon
 					Remove the blue bar background
-			These changes will need to appear here and teh in the primary-nav css file.
+			These changes will need to appear here and the in the primary-nav css file.
+
+			We also also use this style for the sticky headers in lesson 48 & 49. We'll need this file
+			and a new javascript module
 
 			NOTE: The navigatoin bar is in its own file
 	************************************/
@@ -1436,9 +1439,20 @@ a {
 		*/
 @media (min-width: 800px) {
 .site-header {
-			background-color: rgba(47,85,114, .30)
+			background-color: rgba(47,85,114, .30);
+
+			/* For medium and larger screens we want the nave bar to be sticky */
+			position: fixed	/* locks the element even as we scroll */
+
+			/* Create the new rule that will let us make the sticky element have the
+				dark background.
+			*/
 
 }
+			.site-header--dark {
+				/* Make the background darker */
+				background-color: rgba(23, 51, 72, .85);
+			}
 	}
 /* Cause button to move to the right edge for medium and larger screens, but to just
 				follow the flow for small screens. */
@@ -1462,13 +1476,29 @@ a {
 			        transform: translateX(-50%) scale(.8);
 			-webkit-transform-origin: 50% 0;
 			        transform-origin: 50% 0;
+
+			/* And whenever the logo is changing style we'll animate it */
+			transition: -webkit-transform .3s ease-out;
+			transition: transform .3s ease-out;
+			transition: transform .3s ease-out, -webkit-transform .3s ease-out;
 		}
 @media (min-width: 800px) {
 .site-header__logo {
 				left: auto;
 				-webkit-transform: translateX(0) ;
 				        transform: translateX(0) 
+
+				/* As part of our Stickyheader lessons, we want to also shrink the logo whenever
+					we're in dark mode. So we use a rule design that says when class A and Class B
+					are present then apply the rule. Remember, the '&' is the class name of the parent,
+					or in this case, .site-header__logo
+				*/
 		}
+				.site-header--dark .site-header__logo {
+					/* make smaller */
+					-webkit-transform: scale(.57);
+					        transform: scale(.57);
+				}
 	}
 /* address the text of our logo making it invisible */
 .site-header__logo__graphic {
@@ -1723,7 +1753,17 @@ a {
 			font-size: 1rem;
 			background-color: transparent
 
+			/* This rule applies in the case where: we're
+						medium or larger
+						we're in an a tag
+						we have the class is-current-link
+					NOTE!! no spaces on the rule
+			*/
+
 	}
+			.primary-nav a.is-current-link {
+				color: #fabb69;
+			}
 	}
 /************************* End File: _primary-nav.css  **************************************/
 /********************************************

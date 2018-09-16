@@ -5,7 +5,10 @@
 					Shrink the logo
 					Place the get in touch button below the icon
 					Remove the blue bar background
-			These changes will need to appear here and teh in the primary-nav css file.
+			These changes will need to appear here and the in the primary-nav css file.
+
+			We also also use this style for the sticky headers in lesson 48 & 49. We'll need this file
+			and a new javascript module
 
 			NOTE: The navigatoin bar is in its own file
 	************************************/
@@ -51,6 +54,17 @@
 		*/
 		@mixin atMedium{
 			background-color: rgba($mainBlue, .30);
+
+			/* For medium and larger screens we want the nave bar to be sticky */
+			position: fixed;	/* locks the element even as we scroll */
+
+			/* Create the new rule that will let us make the sticky element have the
+				dark background.
+			*/
+			&--dark {
+				/* Make the background darker */
+				background-color: rgba(23, 51, 72, .85);
+			}
 		}
 
 
@@ -76,9 +90,22 @@
 			transform: translateX(-50%) scale(.8);
 			transform-origin: 50% 0;
 
+			/* And whenever the logo is changing style we'll animate it */
+			transition: transform .3s ease-out;
+
 			@mixin atMedium {
 				left: auto;
 				transform: translateX(0) ;
+
+				/* As part of our Stickyheader lessons, we want to also shrink the logo whenever
+					we're in dark mode. So we use a rule design that says when class A and Class B
+					are present then apply the rule. Remember, the '&' is the class name of the parent,
+					or in this case, .site-header__logo
+				*/
+				.site-header--dark & {
+					/* make smaller */
+					transform: scale(.57);
+				}
 			}
 		}
 

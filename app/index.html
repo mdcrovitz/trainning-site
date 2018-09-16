@@ -44,12 +44,22 @@
 
 				<!-- We invent a new class for the nav bar becasue it seems that a horizontal list
 					of links is its opwn design pattern.
+
+					Also, we want to use the menu system as a sort of breadcrumb, and when we're on
+					a target page pointed to by a nav item, we want to highlight that nave item. We
+					do this by giving each item in our nav list an id, and creating a custome
+					css class in the target with a 'back-link' to the nav element. Then we use
+					some js and waypoints so whenever our target scrolls into view, we all a
+					new class to the nav item that highlights it. This functionality is easier
+					in wordpress, becasue you can programatically add classes into the menu items
+					and highligh if you'rre on the designated page. We place the javascript code in
+					stickyheader.js .
 				-->
 		    <nav class="primary-nav primary-nav--pull-right">
 		      <ul>
-		        <li><a href="#our-beginning">Our Beginning</a></li>
-		        <li><a href="#features">Features</a></li>
-		        <li><a href="#testimonials">Testimonials</a></li>
+		        <li><a href="#our-beginning" id="our-beginning-link">Our Beginning</a></li>
+		        <li><a href="#features" id="features-link">Features</a></li>
+		        <li><a href="#testimonials" id="testimonials-link">Testimonials</a></li>
 		      </ul>
 		    </nav>
 			</div>
@@ -92,7 +102,7 @@
 
   </div>
 
-  <div id="our-beginning" class="page-section">
+  <div id="our-beginning" class="page-section" data-matching-link="#our-beginning-link">
   	<!-- We use our own div for class wrapper becasue the page-section class has
   		padding settings that will override our wrapper padding.  -->
   	<div class="wrapper">
@@ -174,8 +184,12 @@
 
     </div>
   </div>
-
-  <div id="features" class="page-section page-section--blue">
+	<!--
+			Custom css attributes begin with the 5 chars 'data-' and you can add a name
+			afterwords. For us, we want to back-link to the menu item that got us here
+			and use the attribute id so we can use jquery to regerence things
+	-->
+  <div id="features" class="page-section page-section--blue" data-matching-link="#features-link">
   	<div class="wrapper">
 
 	    <h2 class="section-title">
@@ -219,7 +233,11 @@
 
   </div>
 
-  <div id="testimonials" class="page-section--no-b-padding-until-large page-section--testimonials">
+	<!--
+		See the section on Features and the nav bar list items on what we're doing to build the bread
+		crumb system.
+	-->
+  <div id="testimonials" class="page-section page-section--no-b-padding-until-large page-section--testimonials" data-matching-link="#testimonials-link">
   	<div class="wrapper wrapper--no-padding-until-large">
 
 	    <h2 class="section-title section-title--blue">
