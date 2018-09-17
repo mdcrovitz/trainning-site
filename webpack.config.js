@@ -10,7 +10,9 @@ var pathjs = require('path');
 
 
 module.exports = {
-		// set internal webpack optimations to development
+		// set internal webpack optimations to development or production
+		// production will compress the js, otherwise it is just a copy
+		// our our source files.
 	mode: 'development',
 
 		// entry specs out the intial source file
