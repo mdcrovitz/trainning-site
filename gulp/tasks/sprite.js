@@ -12,6 +12,24 @@ var del = require('del');
 	Create an opbject literal configuration for svg
 */
 var config = {
+
+	/*
+		In some browsers, becasue the assembled sprites get packed together
+		so tight, we'll get an artifact of the neighboring sprite when they get
+		rendered. To mitigate this, we cause 1 px of spacing to get inserted
+		between individual sprites. We need to add a new object literal to our
+		config, the shape opbject. Note however, that this will make the rendered
+		individual icos possibly be a bit larger, especiualkly if you apply any
+		transforms (as we do for the logo).
+
+	*/
+	shape: {
+		spacing: {
+			padding: 1
+		}
+	},
+
+
 	mode: {
 		css: {
 			// Tell svgSprite where to place our output svg file. We want to remove the
