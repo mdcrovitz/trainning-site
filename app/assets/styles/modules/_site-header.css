@@ -104,7 +104,7 @@
 				*/
 				.site-header--dark & {
 					/* make smaller */
-					transform: scale(.57);
+					transform: scale(.56);
 				}
 			}
 		}

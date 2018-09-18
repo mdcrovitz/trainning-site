@@ -33,7 +33,7 @@
 						want these forward slashes to be escaped, we just want unadorned
 						forward slashes.
 				*/
-				background-image: url('/app/assets/images/sprites/{{{sprite}}}');
+				background-image: url('../../assets/images/sprites/{{{sprite}}}');
 			}
 		{{/first}}
 
